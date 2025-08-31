@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import RainBackground from "../components/Animations/RainBackground";
 
 const Home: React.FC = () => {
-  const [hoverName, setHoverName] = useState(false);
+  const [_hoverName, setHoverName] = useState(false);
   const [copied, setCopied] = useState(false);
 
   const primaryGradient =

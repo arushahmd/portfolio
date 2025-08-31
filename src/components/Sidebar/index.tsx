@@ -2,7 +2,6 @@ import { useState } from "react";
 import type { NavLinkType, SocialLinkType } from "../../types";
 import SidebarLink from "./SidebarLink";
 import SidebarConnect from "./SidebarConnect";
-import profilePic from "../../assets/profile.png";
 
 // Example icons, replace with your preferred ones
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";

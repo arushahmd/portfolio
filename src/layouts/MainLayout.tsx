@@ -1,11 +1,6 @@
-import type { ReactNode } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; // BrowserRouter
 import Sidebar from "../components/Sidebar/index.tsx";
 import Home from "../pages/Home.tsx";
-
-interface MainLayoutProps {
-  children?: ReactNode;
-}
 
 const MainLayout: React.FC = () => {
   return (
