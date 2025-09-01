@@ -139,7 +139,7 @@ const Home: React.FC = () => {
             Connect <FiArrowRight className="w-4 h-4" />
           </MotionLink>
 
-          <motion.a
+          {/* <motion.a
             href="https://linkedin.com/in/arushahmd"
             target="_blank"
             rel="noopener noreferrer"
@@ -151,9 +151,9 @@ const Home: React.FC = () => {
             className={`flex items-center gap-2 px-6 py-2 rounded-md font-medium text-white text-sm ${primaryGradient}`}
           >
             LinkedIn <FiArrowRight className="w-4 h-4" />
-          </motion.a>
+          </motion.a> */}
 
-          <motion.a
+          {/* <motion.a
             href="https://github.com/arushahmd"
             target="_blank"
             rel="noopener noreferrer"
@@ -165,9 +165,9 @@ const Home: React.FC = () => {
             className={`flex items-center gap-2 px-6 py-2 rounded-md font-medium text-white text-sm ${primaryGradient}`}
           >
             GitHub <FiArrowRight className="w-4 h-4" />
-          </motion.a>
+          </motion.a> */}
 
-          <motion.a
+          {/* <motion.a
             href={`${import.meta.env.BASE_URL}Aroosh_Ahmad_AI_Engineer.pdf`}
             download
             whileTap={{ scale: 0.95 }}
@@ -178,7 +178,7 @@ const Home: React.FC = () => {
             className={`flex items-center gap-2 px-6 py-2 rounded-md font-medium text-white text-sm ${primaryGradient}`}
           >
             Resume <FiDownload className="w-4 h-4" />
-          </motion.a>
+          </motion.a> */}
         </div>
       </motion.div>
 
