@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiCopy, FiArrowRight, FiDownload } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import ElegantAIBackground from "../../components/Animations/ElegantAIBackground";
+// import ElegantAIBackground from "../../components/Animations/ElegantAIBackground";
 import RobotRunner from "../../components/Animations/RobotRunner";
 
 const roles = [

@@ -6,10 +6,12 @@ import Projects from "../pages/Projects/Projects.tsx";
 import AboutPage from "../pages/About/About.tsx";
 import ContactPage from "../pages/Contact/ContactPage.tsx";
 import ToolsPage from "../pages/Tools/ToolsPage.tsx";
+import ScrollToTop from "../utils/ScrollToTop.tsx";
 
 const MainLayout: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop selector="#main-content" behavior="auto" />
       <div className="grid grid-cols-[260px_1fr] h-screen w-screen bg-gray-50">
         {/* Sidebar (fixed height, elegant background) */}
         <aside
@@ -26,7 +28,8 @@ const MainLayout: React.FC = () => {
 
         {/* Main Content */}
         <main
-          className="h-full overflow-y-auto p-6" // bg-gradient-to-br from-gray-50 via-white to-gray-100
+          className="h-full overflow-y-auto p-6"
+          id="main-content" // bg-gradient-to-br from-gray-50 via-white to-gray-100
         >
           <div className="max-w-5xl mx-auto w-full">
             <Routes>

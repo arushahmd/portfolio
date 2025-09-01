@@ -12,15 +12,16 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
   const [zoomedImg, setZoomedImg] = useState<string | null>(null);
 
   const nextSlide = () => {
-    if (!project.images) return;
-    setCurrent((prev) => (prev + 1) % project.images.length);
+    const len = project.images?.length ?? 0;
+    if (len === 0) return;
+    setCurrent((prev) => (prev + 1) % len);
   };
 
   const prevSlide = () => {
-    if (!project.images) return;
-    setCurrent((prev) => (prev === 0 ? project.images!.length - 1 : prev - 1));
+    const len = project.images?.length ?? 0;
+    if (len === 0) return;
+    setCurrent((prev) => (prev === 0 ? len - 1 : prev - 1));
   };
-
   return (
     <>
       {/* Card */}
