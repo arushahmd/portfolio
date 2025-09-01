@@ -1,6 +1,11 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom"; // BrowserRouter
 import Sidebar from "../components/Sidebar/index.tsx";
-import Home from "../pages/Home.tsx";
+import Home from "../pages/Home/Home.tsx";
+import Experience from "../pages/Experience/Experience.tsx";
+import Projects from "../pages/Projects/Projects.tsx";
+import AboutPage from "../pages/About/About.tsx";
+import ContactPage from "../pages/Contact/ContactPage.tsx";
+import ToolsPage from "../pages/Tools/ToolsPage.tsx";
 
 const MainLayout: React.FC = () => {
   return (
@@ -21,13 +26,16 @@ const MainLayout: React.FC = () => {
 
         {/* Main Content */}
         <main
-          className="h-full overflow-y-auto p-6 
-                     bg-gradient-to-br from-gray-50 via-white to-gray-100"
+          className="h-full overflow-y-auto p-6" // bg-gradient-to-br from-gray-50 via-white to-gray-100
         >
           <div className="max-w-5xl mx-auto w-full">
             <Routes>
               <Route path="/" element={<Home />} />
-              {/* <Route path="/experience" element={<Experience />} /> */}
+              <Route path="/experience" element={<Experience />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/tools" element={<ToolsPage />} />
             </Routes>
           </div>
         </main>
