@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiCopy, FiArrowRight, FiDownload } from "react-icons/fi";
+import { FiCopy, FiArrowRight } from "react-icons/fi"; //FiDownload -> was used for resume icon
 import { Link } from "react-router-dom";
 // import ElegantAIBackground from "../../components/Animations/ElegantAIBackground";
 import RobotRunner from "../../components/Animations/RobotRunner";

@@ -13,7 +13,11 @@ export const projects: Project[] = [
     title: "Urdu OCR & NLP Pipeline",
     description:
       "Built a CNN-LSTM OCR engine for Urdu, Arabic, and Farsi text recognition achieving ~98% accuracy. Integrated with NLP pipelines for document understanding and language translation.",
-    images: ["/projects/urdu-ocr-1.png", "/projects/urdu-ocr-2.png"],
+    images: [
+      "src/assets/project_images/urdu-ocr/urduocr-desktop-version.png",
+      "src/assets/project_images/urdu-ocr/urdu-ocr-ui.png",
+      "src/assets/project_images/urdu-ocr/speech-to-text.png",
+    ],
     github: "https://github.com/arushahmd/urdu-ocr-media-utils",
     website: "https://tech.cle.org.pk/",
     techStack: ["Python", "PyTorch", "OpenCV", "NLP"],
@@ -24,7 +28,7 @@ export const projects: Project[] = [
     title: "Conversational Flight Assistant",
     description:
       "Developed a Conversational AI Travel Assistant using RAG (LangChain + FAISS) to answer natural flight queries, visa requirements, and refund policies in real time.",
-    images: ["/projects/flight-1.png", "/projects/flight-2.png"],
+    images: ["src/assets/project_images/flight-assistant/flight-assistant.png"],
     techStack: ["Python", "LangChain", "FAISS", "LLMs", "RAG"],
     github:
       "https://github.com/arushahmd/conversational-flight-agent-assistant",
@@ -35,7 +39,14 @@ export const projects: Project[] = [
     title: "Data Matrix Code Restoration Pipeline",
     description:
       "Built an AI-powered pipeline for detecting, restoring, and decoding microscopic Data Matrix codes on silicon components, enabling reliable extraction under distortion and low resolution.",
-    images: ["/projects/digitho-1.png", "/projects/digitho-2.png"],
+    images: [
+      "src/assets/project_images/digitho-data-matrix/dm-home.png",
+      "src/assets/project_images/digitho-data-matrix/dm-main.png",
+      "src/assets/project_images/digitho-data-matrix/process-result.jpg",
+      "src/assets/project_images/digitho-data-matrix/data-reading.jpg",
+      // "src/assets/project_images/digitho-data-matrix/detection-result.png",
+      // "src/assets/project_images/digitho-data-matrix/detected.jpg",
+    ],
     website: "https://digitho.com/solutions/digid-software-platform/",
     techStack: ["Python", "YOLOv5", "Azure ML", "OpenCV", "Roboflow"],
     impact:
@@ -45,11 +56,38 @@ export const projects: Project[] = [
     title: "Real-Time Human Pose Detection",
     description:
       "Engineered a low-latency AI pipeline for human pose recognition and correction across images, videos, and live streams, enabling interactive applications in fitness, healthcare, and live events.",
-    images: ["/projects/pose-1.png", "/projects/pose-2.png"],
+    images: [
+      "src/assets/project_images/human-pose-estimation/main.png",
+      "src/assets/project_images/human-pose-estimation/mobile.png",
+      "src/assets/project_images/human-pose-estimation/result-1.png",
+      "src/assets/project_images/human-pose-estimation/result-2.png",
+    ],
     github: "https://github.com/arushahmd/pose-estimation-correction-ui-emgucv",
     techStack: ["Python", "PyTorch", "OpenCV", "Computer Vision"],
     impact:
       "Reduced manual correction effort by 50% with accurate, real-time pose detection across diverse inputs, delivering production-ready performance for interactive applications.",
+  },
+  {
+    title: "Captcha OCR Solver",
+    description:
+      "Built a deep learning OCR system using CNN + GRU to automatically decode captchas containing lowercase letters and digits, achieving robust sequence prediction under noisy conditions.",
+    images: [
+      "src/assets/project_images/captcha-recognition/main-ui.png",
+      "src/assets/project_images/captcha-recognition/multi-read.png",
+      "src/assets/project_images/captcha-recognition/result-1.png",
+    ],
+    github:
+      "https://github.com/arushahmd/ai-projects/tree/master/captcha-solver",
+    techStack: [
+      "Python",
+      "PyTorch",
+      "TensorFlow",
+      "CNN",
+      "GRU",
+      "Albumentations",
+    ],
+    impact:
+      "Achieved >95% accuracy on unseen captcha formats, reducing manual solving effort and providing a scalable, production-ready OCR solution robust to noise and distortions.",
   },
 
   // Add more projects here
