@@ -3,7 +3,7 @@ import type { NavLinkType, SocialLinkType } from "../../types";
 import SidebarLink from "./SidebarLink";
 import SidebarConnect from "./SidebarConnect";
 
-import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa"; // FaTwitter
 import {
   HomeIcon,
   BriefcaseIcon,

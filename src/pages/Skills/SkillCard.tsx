@@ -5,7 +5,8 @@ import type { Skill } from "./skillsData";
 const MotionDiv = motion.div;
 
 // SkillCard.tsx
-const SkillCard: React.FC<Skill> = ({ name, icon: Icon }) => {
+const SkillCard: React.FC<Skill> = ({ icon: Icon }) => {
+  // name
   return (
     <MotionDiv
       className="flex items-center justify-center rounded-lg

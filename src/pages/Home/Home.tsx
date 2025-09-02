@@ -68,7 +68,7 @@ const Home: React.FC = () => {
         ></motion.div>
 
         {/* Roles */}
-        <div className="text-sm md:text-lg font-medium text-gray-700">
+        <div className="text-sm md:text-lg md:text-left font-medium text-gray-700">
           <AnimatePresence mode="wait">
             <motion.span
               key={roles[roleIndex]}

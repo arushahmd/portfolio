@@ -1,3 +1,14 @@
+import chatgpt from "../../assets/tools-images/chatgpt.png";
+import notion from "../../assets/tools-images/notion.png";
+import pycharm from "../../assets/tools-images/pycharm.png";
+import slack from "../../assets/tools-images/slack.png";
+import vertexai from "../../assets/tools-images/vertexai.png";
+import vscode from "../../assets/tools-images/vscode.png";
+import jupyter from "../../assets/tools-images/jupyter.png";
+import deepseek from "../../assets/tools-images/deepseek.png";
+
+// export { chatgpt, notion, pycharm, slack, vertexai };
+
 export type ToolItem = {
   name: string; // Name of the tool
   icon?: React.ComponentType<{ className?: string }>; // Optional React icon component
@@ -8,42 +19,42 @@ export type ToolItem = {
 export const toolsData: ToolItem[] = [
   {
     name: "ChatGPT",
-    image: " ",
+    image: chatgpt,
     purpose: "Productivity",
   },
   {
     name: "DeepSeek",
-    image: " ",
+    image: deepseek,
     purpose: "Research",
   },
   {
     name: "Slack",
-    image: " ",
+    image: slack,
     purpose: "Communication",
   },
   {
     name: "Notion",
-    image: " ",
+    image: notion,
     purpose: "Productivity",
   },
   {
     name: "VSCode",
-    image: " ",
+    image: vscode,
     purpose: "IDE",
   },
   {
     name: "Jupyter Notebook",
-    image: " ",
+    image: jupyter,
     purpose: "ML/Data Science",
   },
   {
     name: "PyCharm",
-    image: " ",
+    image: pycharm,
     purpose: "IDE",
   },
   {
     name: "Vertex AI",
-    image: " ",
+    image: vertexai,
     purpose: "Cloud AI",
   },
 ];
