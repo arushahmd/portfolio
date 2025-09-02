@@ -34,7 +34,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex overflow-hidden px-4 pt-16 md:pt-20">
+    <div className="relative flex overflow-hidden px-4">
       {/* Animated Subtle Background */}
       {/* <ElegantAIBackground /> */}
 
@@ -46,7 +46,7 @@ const Home: React.FC = () => {
         className="flex flex-col max-w-2xl w-full text-gray-600 space-y-6"
       >
         {/* Name */}
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight text-left relative">
+        <h1 className="text-3xl md:text-4xl mb-3 font-bold leading-tight text-left relative">
           Hi, I am{" "}
           <motion.span
             initial={{ backgroundPosition: "200% 0" }}
@@ -58,6 +58,14 @@ const Home: React.FC = () => {
             Aroosh
           </motion.span>
         </h1>
+
+        {/* Underline */}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="w-70 h-1 bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 rounded-full origin-left"
+        ></motion.div>
 
         {/* Roles */}
         <div className="text-sm md:text-lg font-medium text-gray-700">
@@ -74,14 +82,6 @@ const Home: React.FC = () => {
             </motion.span>
           </AnimatePresence>
         </div>
-
-        {/* Underline */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-24 h-1 bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 rounded-full origin-left"
-        ></motion.div>
 
         {/* Intro */}
         <motion.div

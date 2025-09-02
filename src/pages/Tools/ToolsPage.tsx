@@ -15,14 +15,14 @@ const item = {
 const ToolsPage: React.FC = () => {
   return (
     <motion.div
-      className="min-h-screen py-20 flex flex-col items-center"
+      className="min-h-screen flex flex-col items-center "
       initial="hidden"
       animate="show"
       variants={container}
     >
       {/* Gradient animated heading */}
       <motion.h1
-        className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent
+        className="text-3xl md:text-4xl font-bold mb-3 text-center bg-clip-text text-transparent
                    bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
         variants={{
           hidden: { opacity: 0, y: -20, scale: 0.95 },
@@ -39,7 +39,7 @@ const ToolsPage: React.FC = () => {
 
       {/* Optional gradient underline */}
       <motion.div
-        className="w-24 h-1 mb-8 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+        className="w-45 h-1 mb-8 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

@@ -14,7 +14,7 @@ const item = {
 
 const Projects: React.FC = () => {
   return (
-    <div className="relative bg-gray-50 py-20 px-4 md:px-16">
+    <div className="relative bg-gray-50 px-4 md:px-16">
       {/* Heading */}
       <div className="relative mb-12 flex flex-col items-start">
         <motion.h2

@@ -17,7 +17,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 
   // Base styles
   const baseClasses =
-    "flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-300 relative my-1.5";
+    "flex items-center gap-3 px-4 py-2.5 rounded-md text-sm font-medium transition-all duration-300 relative my-1.5";
   // 👆 more spacing between links so glow doesn’t clash
 
   // State styles
@@ -53,7 +53,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
 
       {/* Hover Glow Accent (AI-ish neon pulse) */}
       {hover && !isActive && (
-        <span className="absolute inset-0 rounded-xl ring-1 ring-purple-300 opacity-60 animate-pulse"></span>
+        <span className="absolute inset-0 rounded-md   ring-1 ring-purple-300 opacity-60 animate-pulse"></span>
       )}
 
       {/* Active glow border */}

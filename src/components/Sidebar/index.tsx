@@ -88,7 +88,7 @@ const Sidebar: React.FC = () => {
         ))}
       </nav>
 
-      <div className="relative z-10">
+      <div className="relative z-10 mt-40">
         <SidebarConnect links={socialLinks} />
       </div>
     </aside>

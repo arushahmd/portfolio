@@ -11,7 +11,7 @@ interface AboutPageProps {
 
 const AboutPage: React.FC<AboutPageProps> = ({ showIllustration = false }) => {
   return (
-    <div className="relative min-h-screen bg-gray-50 py-20 px-4 md:px-16 flex flex-col md:flex-row gap-8">
+    <div className="relative bg-gray-50 py-20 px-4 md:px-16  md:py-0 flex flex-col md:flex-row gap-8">
       {/* Left Content */}
       <div className="flex-1 flex flex-col gap-4 text-left">
         {/* Heading */}

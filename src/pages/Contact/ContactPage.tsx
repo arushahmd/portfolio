@@ -50,7 +50,7 @@ const cardVariant = {
 
 const ContactPage: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-gray-50 py-20 px-4 md:px-16 flex flex-col md:flex-row gap-12">
+    <div className="relative bg-gray-50 py-20 px-4 md:px-16 md:py-0 flex flex-col md:flex-row gap-12">
       {/* Left: Form */}
       <motion.div
         className="flex-2"

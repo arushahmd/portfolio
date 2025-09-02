@@ -28,10 +28,10 @@ const MainLayout: React.FC = () => {
 
         {/* Main Content */}
         <main
-          className="h-full overflow-y-auto p-6 mt-8"
+          className="overflow-y-auto" //  p-6 mt-8
           id="main-content" // bg-gradient-to-br from-gray-50 via-white to-gray-100
         >
-          <div className="max-w-5xl mx-auto w-full">
+          <div className="max-w-5xl mx-auto w-full md:pt-40">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/experience" element={<Experience />} />
