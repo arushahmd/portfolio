@@ -7,7 +7,7 @@ interface SidebarConnectProps {
 
 const SidebarConnect: React.FC<SidebarConnectProps> = ({ links }) => {
   return (
-    <div className="flex flex-col gap-4 mt-4">
+    <div className="flex flex-col gap-4 mt-4 ">
       {/* Heading */}
       <p className="font-semibold tracking-wide text-sm uppercase relative text-left">
         <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-400 bg-clip-text text-transparent">

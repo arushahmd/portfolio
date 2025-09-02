@@ -1,149 +1,54 @@
 import { motion } from "framer-motion";
 import type { ToolItem } from "./toolsData";
-import { FaStar, FaCrown, FaMedal } from "react-icons/fa";
-import type { JSX } from "react";
-
-type Level = "specialist" | "expert" | "intermediate" | "beginner";
-
-const levelFrom = (p: number): Level =>
-  p >= 90
-    ? "specialist"
-    : p >= 80
-    ? "expert"
-    : p >= 60
-    ? "intermediate"
-    : "beginner";
-
-const levelMeta: Record<
-  Level,
-  {
-    bg: string;
-    ring: string;
-    badge: string;
-    text: string;
-    label: string;
-    icon: JSX.Element;
-  }
-> = {
-  specialist: {
-    bg: "from-purple-600 via-indigo-500 to-cyan-400",
-    ring: "ring-purple-400/40",
-    badge: "bg-purple-600 text-white",
-    text: "text-white",
-    label: "Specialist",
-    icon: <FaCrown className="text-purple-300 w-4 h-4" />,
-  },
-  expert: {
-    bg: "from-indigo-600 via-purple-600 to-cyan-400",
-    ring: "ring-indigo-400/40",
-    badge: "bg-indigo-600 text-white",
-    text: "text-white",
-    label: "Expert",
-    icon: <FaMedal className="text-indigo-300 w-4 h-4" />,
-  },
-  intermediate: {
-    bg: "from-gray-600 via-indigo-500 to-cyan-400",
-    ring: "ring-cyan-400/30",
-    badge: "bg-cyan-600 text-white",
-    text: "text-white",
-    label: "Intermediate",
-    icon: (
-      <div className="flex gap-0.5">
-        <FaStar className="text-cyan-300 w-3.5 h-3.5 opacity-75" />
-        <FaStar className="text-cyan-300 w-3.5 h-3.5 opacity-75" />
-      </div>
-    ),
-  },
-  beginner: {
-    bg: "from-gray-400 via-gray-500 to-gray-600",
-    ring: "ring-gray-400/40",
-    badge: "bg-gray-600 text-white",
-    text: "text-white",
-    label: "Beginner",
-    icon: <FaStar className="text-gray-400 w-4 h-4 opacity-60" />,
-  },
-};
 
 const MotionDiv = motion.div;
 
-const ToolCard: React.FC<ToolItem> = ({
-  name,
-  icon: Icon,
-  image,
-  experience,
-  proficiency,
-}) => {
-  const lvl = levelFrom(proficiency);
-  const meta = levelMeta[lvl];
-
+const ToolCard: React.FC<ToolItem> = ({ name, icon: Icon, image, purpose }) => {
   return (
     <MotionDiv
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45 }}
+      className="relative w-full max-w-[260px] cursor-pointer overflow-visible group perspective"
       whileHover={{ scale: 1.03 }}
-      className={`relative group w-full bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 ring-0 hover:${meta.ring}`}
-      style={{ willChange: "transform", transformStyle: "preserve-3d" }}
-      title={`${name} • ${experience} • ${meta.label}`}
     >
-      {/* Hover gradient overlay */}
-      <div
-        className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl bg-gradient-to-r ${meta.bg}`}
-        style={{ zIndex: 0 }}
-      />
+      {/* Soft background glow */}
+      <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-purple-900 via-indigo-800 to-cyan-700 opacity-20 blur-3xl z-0 pointer-events-none"></div>
 
-      {/* Content */}
-      <div className="relative z-[1] flex items-center gap-4 p-4">
-        {/* Logo */}
+      {/* 3D tilt container */}
+      <MotionDiv
+        className="relative flex items-center gap-4 bg-white rounded-lg border border-gray-200
+                   shadow-[0_10px_25px_rgba(109,40,217,0.15)] hover:shadow-[0_20px_40px_rgba(109,40,217,0.25)]
+                   transition-shadow duration-300 p-4 z-10"
+        whileHover={{
+          rotateX: 5,
+          rotateY: -5,
+          transition: { type: "spring", stiffness: 200, damping: 15 },
+        }}
+      >
+        {/* Icon / Image */}
         <div
-          className={`flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:bg-white/10 transition`}
+          className="w-14 h-14 flex items-center justify-center bg-gray-50 border border-gray-200
+                        group-hover:bg-gradient-to-tr from-purple-600 via-indigo-500 to-cyan-400 transition-all"
         >
           {Icon ? (
-            <Icon className="w-7 h-7 text-gray-700 group-hover:text-white transition" />
+            <Icon className="w-8 h-8 text-gray-700 group-hover:text-white transition-all" />
           ) : image ? (
             <img
               src={image}
               alt={name}
-              className="w-7 h-7 object-contain group-hover:brightness-150 transition"
+              className="w-10 h-10 object-contain transition-all group-hover:brightness-125"
             />
           ) : null}
         </div>
 
-        {/* Title + Proficiency */}
-        <div className="flex-1 min-w-0">
-          <div
-            className={`text-sm md:text-base font-semibold text-gray-800 group-hover:${meta.text} truncate`}
-          >
+        {/* Name + Purpose */}
+        <div className="flex flex-col items-start">
+          <h3 className="text-base font-semibold text-gray-800 group-hover:text-gray-900">
             {name}
-          </div>
-
-          <div className="mt-2 w-full h-2 rounded-full bg-gray-200/70 overflow-hidden">
-            <motion.div
-              className="h-2 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
-              initial={{ width: 0 }}
-              whileInView={{ width: `${proficiency}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-            />
-          </div>
-
-          <div className="mt-1 flex items-center justify-between text-xs">
-            <span
-              className={`flex items-center gap-1 text-gray-600 group-hover:${meta.text}`}
-            >
-              {meta.icon} {meta.label}
-            </span>
-          </div>
+          </h3>
+          <p className="text-sm text-gray-500 group-hover:text-gray-700">
+            {purpose}
+          </p>
         </div>
-
-        {/* Experience badge */}
-        <div
-          className={`absolute top-2 right-2 px-2 py-0.5 rounded-full text-[11px] font-semibold ${meta.badge} shadow-sm`}
-        >
-          {experience}
-        </div>
-      </div>
+      </MotionDiv>
     </MotionDiv>
   );
 };

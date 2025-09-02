@@ -4,59 +4,60 @@ import { toolsData } from "./toolsData";
 
 const container = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.08 } },
+  show: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
 const item = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
 const ToolsPage: React.FC = () => {
   return (
     <motion.div
-      className="min-h-screen bg-gray-50 py-20 px-4 md:px-16"
+      className="min-h-screen py-20 flex flex-col items-center"
       initial="hidden"
       animate="show"
       variants={container}
     >
-      {/* Heading */}
+      {/* Gradient animated heading */}
       <motion.h1
-        className="text-3xl md:text-4xl font-bold text-gray-800 mb-10 text-left"
-        variants={item}
+        className="text-3xl md:text-4xl font-bold mb-12 text-center bg-clip-text text-transparent
+                   bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+        variants={{
+          hidden: { opacity: 0, y: -20, scale: 0.95 },
+          show: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.8, ease: "easeOut" },
+          },
+        }}
       >
         Tools I Use
       </motion.h1>
 
-      {toolsData.map((category, idx) => (
-        <motion.section key={idx} className="mb-12" variants={item}>
-          <motion.h2
-            className="text-xl md:text-2xl font-semibold text-gray-700 mb-6 relative"
-            initial={{ opacity: 0, x: -18 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-          >
-            {category.category}
-            <span className="absolute left-0 -bottom-2 w-16 h-1 bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 rounded-full"></span>
-          </motion.h2>
+      {/* Optional gradient underline */}
+      <motion.div
+        className="w-24 h-1 mb-8 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      />
 
-          {/* Grid */}
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.15 }}
-            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5"
-          >
-            {category.tools.map((tool, i) => (
-              <motion.div key={i} variants={item}>
-                <ToolCard {...tool} />
-              </motion.div>
-            ))}
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-[560px]"
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        {toolsData.map((tool, idx) => (
+          <motion.div key={idx} variants={item} className="flex justify-center">
+            <ToolCard {...tool} />
           </motion.div>
-        </motion.section>
-      ))}
+        ))}
+      </motion.div>
     </motion.div>
   );
 };

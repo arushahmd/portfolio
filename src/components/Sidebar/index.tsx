@@ -72,12 +72,12 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <aside className="flex flex-col justify-between h-full w-64 p-4 bg-gradient-to-b from-gray-50 via-white to-gray-100 border-r border-gray-200 relative">
+    <aside className="flex flex-col justify-start h-full w-64 p-4 bg-gradient-to-b from-gray-50 via-white to-gray-100 border-r border-gray-200 relative">
       <div className="absolute inset-0 bg-[url('/abstract-ai-bg.png')] bg-cover bg-center opacity-10 mix-blend-overlay pointer-events-none"></div>
 
       <ProfileHeader />
 
-      <nav className="flex flex-col gap-1 mt-3 relative z-10">
+      <nav className="flex flex-col gap-1 mt-7 relative z-10">
         {links.map((link) => (
           <SidebarLink
             key={link.label}
