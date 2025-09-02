@@ -110,7 +110,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
               onClick={() => setZoomedImg(true)}
             >
               <img
-                src={project.images[current]}
+                src={project.images?.[current]}
                 alt={`${project.title} screenshot`}
                 className="max-w-full max-h-full object-contain"
               />
@@ -132,7 +132,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
 
             {/* Dots */}
             <div className="absolute bottom-2 w-full flex justify-center gap-2">
-              {project.images.map((_, i) => (
+              {project.images?.map((_, i) => (
                 <span
                   key={i}
                   className={`w-2 h-2 rounded-full ${
@@ -162,7 +162,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
             </button>
 
             <motion.img
-              src={project.images[current]}
+              src={project.images?.[current]}
               alt="Zoomed"
               className="max-w-4xl max-h-[90vh] rounded-lg object-contain"
               initial={{ scale: 0.8 }}
