@@ -1,4 +1,4 @@
-// src/pages/Tools/toolsData.tsx
+// src/pages/toolsData.tsx
 import {
   SiPython,
   SiJavascript,
@@ -11,25 +11,38 @@ import {
   SiJupyter,
   SiPycharm,
   SiGooglesheets,
+  SiDocker,
+  SiKubernetes,
+  SiGit,
+  SiReact,
+  SiDjango,
+  SiTensorflow,
+  SiGooglecloud,
+  SiLangchain,
+  SiOllama,
+  SiGooglebigquery,
+  SiHuggingface,
+  SiOpenai,
+  SiMysql,
+  SiMongodb,
 } from "react-icons/si";
+import { FaSearch } from "react-icons/fa";
+import { VscVscode, VscAzure } from "react-icons/vsc";
+import { TbSql } from "react-icons/tb";
+import { BiLogoPostgresql } from "react-icons/bi";
 
 export type ToolItem = {
   name: string;
   icon?: React.ComponentType<{ className?: string }>;
   image?: string;
   experience: string;
-  proficiency: number; // 0-100, used for bar + level
+  proficiency: number; // 0-100
 };
 
 export type ToolsCategory = {
   category: string;
   tools: ToolItem[];
 };
-
-// 0–59 → beginner
-// 60–79 → intermediate
-// 80–89 → expert
-// 90–100 → specialist
 
 export const toolsData: ToolsCategory[] = [
   {
@@ -45,82 +58,106 @@ export const toolsData: ToolsCategory[] = [
       {
         name: "TypeScript",
         icon: SiTypescript,
-        experience: "1.5 yrs",
-        proficiency: 76,
+        experience: "6 mo",
+        proficiency: 70,
       },
     ],
   },
   {
-    category: "AI & ML",
+    category: "AI & ML / Deep Learning",
     tools: [
       {
         name: "PyTorch",
         icon: SiPytorch,
         experience: "2 yrs",
-        proficiency: 86,
+        proficiency: 90,
       },
-      { name: "NumPy", icon: SiNumpy, experience: "3+ yrs", proficiency: 95 },
-      { name: "Pandas", icon: SiPandas, experience: "3+ yrs", proficiency: 90 },
+      {
+        name: "TensorFlow",
+        icon: SiTensorflow,
+        experience: "1.5 yrs",
+        proficiency: 75,
+      },
       {
         name: "Scikit-learn",
         icon: SiScikitlearn,
         experience: "2 yrs",
-        proficiency: 84,
+        proficiency: 85,
+      },
+      { name: "NumPy", icon: SiNumpy, experience: "2 yrs", proficiency: 90 },
+      { name: "Pandas", icon: SiPandas, experience: "2 yrs", proficiency: 88 },
+      {
+        name: "Matplotlib",
+        icon: SiTableau,
+        experience: "2 yrs",
+        proficiency: 80,
       },
       {
-        name: "NLTK",
-        image: "/tools/nltk.png",
-        experience: "1 yr",
-        proficiency: 72,
+        name: "Seaborn",
+        icon: SiTableau,
+        experience: "1.5 yrs",
+        proficiency: 65,
       },
       {
         name: "Transformers",
-        image: "/tools/huggingface.png",
+        icon: SiHuggingface,
         experience: "1 yr",
         proficiency: 78,
       },
+      { name: "LLMs", icon: SiOpenai, experience: "1 yr", proficiency: 85 },
       {
-        name: "Deep Learning",
-        image: "/tools/deeplearning.png",
-        experience: "2 yrs",
-        proficiency: 85,
+        name: "LangChain",
+        icon: SiLangchain,
+        experience: "6 mo",
+        proficiency: 75,
       },
+      { name: "Ollama", icon: SiOllama, experience: "6 mo", proficiency: 70 },
+      { name: "RAG", icon: FaSearch, experience: "6 mo", proficiency: 70 },
       {
-        name: "Machine Learning",
-        image: "/tools/ml.png",
-        experience: "3+ yrs",
-        proficiency: 90,
-      },
-      {
-        name: "RAG",
-        image: "/tools/rag.png",
-        experience: "0.5 yr",
-        proficiency: 66,
-      },
-      {
-        name: "LLMs",
-        image: "/tools/llm.png",
-        experience: "1 yr",
-        proficiency: 80,
+        name: "AI Agents",
+        icon: FaSearch,
+        experience: "6 mo",
+        proficiency: 72,
       },
     ],
   },
   {
-    category: "Data Tools",
+    category: "Data Tools / Databases / Cloud",
     tools: [
-      { name: "Tableau", icon: SiTableau, experience: "1 yr", proficiency: 70 },
       {
-        name: "Excel",
-        image: "/tools/excel.png",
-        experience: "3+ yrs",
-        proficiency: 94,
+        name: "BigQuery",
+        icon: SiGooglebigquery,
+        experience: "6 mo",
+        proficiency: 70,
+      },
+      {
+        name: "Vertex AI",
+        icon: SiGooglecloud,
+        experience: "6 mo",
+        proficiency: 70,
       },
       {
         name: "Google Sheets",
         icon: SiGooglesheets,
-        experience: "3+ yrs",
+        experience: "2 yrs",
         proficiency: 90,
       },
+      { name: "Tableau", icon: SiTableau, experience: "6 mo", proficiency: 60 },
+      {
+        name: "SQL (PostgreSQL/MySQL/SQLite)",
+        icon: TbSql,
+        experience: "1 yr",
+        proficiency: 78,
+      },
+      { name: "MySQL", icon: SiMysql, experience: "1 yr", proficiency: 80 },
+      { name: "SQLite", icon: TbSql, experience: "1 yr", proficiency: 80 },
+      {
+        name: "Postgre SQL",
+        icon: BiLogoPostgresql,
+        experience: "6 mo",
+        proficiency: 70,
+      },
+      { name: "MongoDB", icon: SiMongodb, experience: "6 mo", proficiency: 65 },
     ],
   },
   {
@@ -128,7 +165,7 @@ export const toolsData: ToolsCategory[] = [
     tools: [
       {
         name: "VSCode",
-        image: "/tools/vscode.png",
+        icon: VscVscode,
         experience: "3+ yrs",
         proficiency: 95,
       },
@@ -136,7 +173,7 @@ export const toolsData: ToolsCategory[] = [
         name: "PyCharm",
         icon: SiPycharm,
         experience: "2 yrs",
-        proficiency: 80,
+        proficiency: 85,
       },
       {
         name: "Jupyter Notebook",
@@ -144,11 +181,32 @@ export const toolsData: ToolsCategory[] = [
         experience: "3+ yrs",
         proficiency: 90,
       },
+      { name: "Git", icon: SiGit, experience: "3+ yrs", proficiency: 92 },
+      { name: "Docker", icon: SiDocker, experience: "1 yr", proficiency: 75 },
       {
-        name: "Azure",
-        image: "/tools/azure.png",
+        name: "Kubernetes",
+        icon: SiKubernetes,
+        experience: "1 yr",
+        proficiency: 65,
+      },
+      {
+        name: "Azure ML / Azure",
+        icon: VscAzure,
         experience: "1 yr",
         proficiency: 72,
+      },
+      { name: "AWS", icon: SiGooglecloud, experience: "6 mo", proficiency: 60 },
+    ],
+  },
+  {
+    category: "Web / Frameworks",
+    tools: [
+      { name: "React", icon: SiReact, experience: "1.5 yrs", proficiency: 80 },
+      {
+        name: "Django",
+        icon: SiDjango,
+        experience: "1.5 yrs",
+        proficiency: 78,
       },
     ],
   },

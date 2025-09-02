@@ -1,4 +1,3 @@
-// src/pages/Tools/ToolsPage.tsx
 import { motion } from "framer-motion";
 import ToolCard from "./ToolCard";
 import { toolsData } from "./toolsData";
@@ -42,7 +41,7 @@ const ToolsPage: React.FC = () => {
             <span className="absolute left-0 -bottom-2 w-16 h-1 bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 rounded-full"></span>
           </motion.h2>
 
-          {/* Grid (cards are horizontal inside) */}
+          {/* Grid */}
           <motion.div
             variants={container}
             initial="hidden"

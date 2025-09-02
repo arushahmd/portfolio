@@ -1,4 +1,3 @@
-// src/pages/Tools/ToolCard.tsx
 import { motion } from "framer-motion";
 import type { ToolItem } from "./toolsData";
 import { FaStar, FaCrown, FaMedal } from "react-icons/fa";
@@ -15,7 +14,6 @@ const levelFrom = (p: number): Level =>
     ? "intermediate"
     : "beginner";
 
-// Subtle but distinct colors (low saturation, slightly muted)
 const levelMeta: Record<
   Level,
   {
@@ -83,53 +81,36 @@ const ToolCard: React.FC<ToolItem> = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ scale: 1.05, rotateX: 4, rotateY: 4 }}
-      className={`
-        relative group w-full
-        bg-white border border-gray-200 rounded-2xl shadow-sm
-        hover:shadow-2xl transition-all duration-300
-        ring-0 hover:${meta.ring}
-      `}
-      style={{
-        willChange: "transform",
-        transformStyle: "preserve-3d",
-      }}
+      transition={{ duration: 0.45 }}
+      whileHover={{ scale: 1.03 }}
+      className={`relative group w-full bg-white border border-gray-200 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-300 ring-0 hover:${meta.ring}`}
+      style={{ willChange: "transform", transformStyle: "preserve-3d" }}
       title={`${name} • ${experience} • ${meta.label}`}
     >
       {/* Hover gradient overlay */}
       <div
-        className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl bg-gradient-to-r ${meta.bg}`}
+        className={`absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-2xl bg-gradient-to-r ${meta.bg}`}
         style={{ zIndex: 0 }}
       />
 
-      {/* Content row */}
+      {/* Content */}
       <div className="relative z-[1] flex items-center gap-4 p-4">
-        {/* Logo container with rotation */}
-        <motion.div
-          whileHover={{ rotate: 360 }}
-          transition={{ type: "spring", stiffness: 180, damping: 14 }}
-          className={`
-            flex items-center justify-center shrink-0
-            w-12 h-12 rounded-xl
-            bg-gray-50 border border-gray-200
-            group-hover:bg-white/10 group-hover:border-white/20 transition
-          `}
+        {/* Logo */}
+        <div
+          className={`flex items-center justify-center shrink-0 w-12 h-12 rounded-xl bg-gray-50 border border-gray-200 group-hover:bg-white/10 transition`}
         >
           {Icon ? (
-            <Icon
-              className={`w-7 h-7 text-gray-700 group-hover:text-white transition`}
-            />
+            <Icon className="w-7 h-7 text-gray-700 group-hover:text-white transition" />
           ) : image ? (
             <img
               src={image}
               alt={name}
-              className="w-7 h-7 object-contain group-hover:brightness-200 transition"
+              className="w-7 h-7 object-contain group-hover:brightness-150 transition"
             />
           ) : null}
-        </motion.div>
+        </div>
 
-        {/* Title + Proficiency bar */}
+        {/* Title + Proficiency */}
         <div className="flex-1 min-w-0">
           <div
             className={`text-sm md:text-base font-semibold text-gray-800 group-hover:${meta.text} truncate`}
@@ -147,7 +128,6 @@ const ToolCard: React.FC<ToolItem> = ({
             />
           </div>
 
-          {/* Meta row */}
           <div className="mt-1 flex items-center justify-between text-xs">
             <span
               className={`flex items-center gap-1 text-gray-600 group-hover:${meta.text}`}
@@ -159,10 +139,7 @@ const ToolCard: React.FC<ToolItem> = ({
 
         {/* Experience badge */}
         <div
-          className={`
-            absolute top-2 right-2 px-2 py-0.5 rounded-full text-[11px] font-semibold
-            ${meta.badge} shadow-sm
-          `}
+          className={`absolute top-2 right-2 px-2 py-0.5 rounded-full text-[11px] font-semibold ${meta.badge} shadow-sm`}
         >
           {experience}
         </div>
