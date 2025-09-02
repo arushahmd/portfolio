@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "./projectsData";
-import { FiGithub, FiExternalLink, FiX } from "react-icons/fi";
+import {
+  FiGithub,
+  FiExternalLink,
+  FiX,
+  FiChevronLeft,
+  FiChevronRight,
+} from "react-icons/fi";
 
 interface Props {
   project: Project;
@@ -9,19 +15,20 @@ interface Props {
 
 const ProjectCard: React.FC<Props> = ({ project }) => {
   const [current, setCurrent] = useState(0);
-  const [zoomedImg, setZoomedImg] = useState<string | null>(null);
+  const [zoomedImg, setZoomedImg] = useState<boolean>(false);
+
+  const len = project.images?.length ?? 0;
 
   const nextSlide = () => {
-    const len = project.images?.length ?? 0;
     if (len === 0) return;
     setCurrent((prev) => (prev + 1) % len);
   };
 
   const prevSlide = () => {
-    const len = project.images?.length ?? 0;
     if (len === 0) return;
     setCurrent((prev) => (prev === 0 ? len - 1 : prev - 1));
   };
+
   return (
     <>
       {/* Card */}
@@ -88,7 +95,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
         </div>
 
         {/* Right: Slideshow */}
-        {project.images && project.images.length > 0 && (
+        {len > 0 && (
           <div className="flex-1 relative">
             <motion.div
               key={current}
@@ -96,13 +103,13 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -40 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="w-full h-56 md:h-64 rounded-lg overflow-hidden cursor-pointer"
-              onClick={() => setZoomedImg(project.images![current])}
+              className="w-full h-56 md:h-64 rounded-lg overflow-hidden cursor-pointer flex items-center justify-center bg-gray-100"
+              onClick={() => setZoomedImg(true)}
             >
               <img
                 src={project.images[current]}
                 alt={`${project.title} screenshot`}
-                className="w-full h-full object-cover"
+                className="max-w-full max-h-full object-contain"
               />
             </motion.div>
 
@@ -135,7 +142,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
         )}
       </motion.div>
 
-      {/* Zoom Modal */}
+      {/* Zoom Modal with navigation */}
       <AnimatePresence>
         {zoomedImg && (
           <motion.div
@@ -143,18 +150,32 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setZoomedImg(null)}
           >
+            <button
+              onClick={prevSlide}
+              className="absolute left-6 top-1/2 -translate-y-1/2 text-white text-3xl p-2 bg-gray-800/50 rounded-full"
+            >
+              <FiChevronLeft />
+            </button>
+
             <motion.img
-              src={zoomedImg}
+              src={project.images[current]}
               alt="Zoomed"
-              className="max-w-4xl max-h-[90vh] rounded-lg"
+              className="max-w-4xl max-h-[90vh] rounded-lg object-contain"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
             />
+
             <button
-              onClick={() => setZoomedImg(null)}
+              onClick={nextSlide}
+              className="absolute right-6 top-1/2 -translate-y-1/2 text-white text-3xl p-2 bg-gray-800/50 rounded-full"
+            >
+              <FiChevronRight />
+            </button>
+
+            <button
+              onClick={() => setZoomedImg(false)}
               className="absolute top-6 right-6 text-white text-2xl"
             >
               <FiX />
