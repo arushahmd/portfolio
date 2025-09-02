@@ -19,7 +19,6 @@ const ContactForm: React.FC = () => {
     setStatus("Sending...");
 
     try {
-      // 1️⃣ Send email to you (recipient)
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
@@ -27,7 +26,6 @@ const ContactForm: React.FC = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      // 2️⃣ Send confirmation email to user
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_CONFIRMATION_TEMPLATE_ID,
@@ -49,9 +47,19 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <form
-      className="flex flex-col gap-4 w-full" // md:w-2/3 mx-auto
+    <motion.form
+      className="relative flex flex-col gap-4 w-full p-6 md:p-8 rounded-2xl
+                 bg-[linear-gradient(135deg,#7C3AED,#5B21B6,#06B6D4)]/80
+                 shadow-[0_15px_30px_rgba(124,58,237,0.2),
+                     0_10px_20px_rgba(91,33,182,0.15),
+                     0_5px_10px_rgba(0,0,0,0.1),
+                     0_2px_5px_rgba(6,182,212,0.05)]
+                 shadow-2xl"
       onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      viewport={{ once: true }}
     >
       <input
         type="text"
@@ -94,14 +102,14 @@ const ContactForm: React.FC = () => {
 
       {status && (
         <motion.p
-          className="text-center text-sm text-gray-600 mt-2"
+          className="text-center text-sm text-gray-50 mt-2"
           initial={{ opacity: 0, y: -5 }}
           animate={{ opacity: 1, y: 0 }}
         >
           {status}
         </motion.p>
       )}
-    </form>
+    </motion.form>
   );
 };
 

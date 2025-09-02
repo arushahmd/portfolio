@@ -30,10 +30,13 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
   };
 
   return (
-    <>
+    <div className="relative mb-8">
+      {/* Soft background glow */}
+      <div className="absolute -inset-6 rounded-3xl bg-gradient-to-tr from-purple-900 via-indigo-800 to-cyan-700 opacity-20 blur-3xl z-0 pointer-events-none"></div>
+
       {/* Card */}
       <motion.div
-        className="bg-white shadow-lg rounded-2xl p-6 md:p-8 border border-gray-200 hover:shadow-2xl transition flex flex-col md:flex-row gap-6"
+        className="relative bg-white shadow-lg rounded-2xl p-6 md:p-8 border border-gray-200 hover:shadow-2xl transition flex flex-col md:flex-row gap-6 z-10"
         whileHover={{ y: -5, scale: 1.02 }}
       >
         {/* Left: Info */}
@@ -183,7 +186,7 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 };
 

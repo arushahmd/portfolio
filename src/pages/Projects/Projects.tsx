@@ -16,15 +16,26 @@ const Projects: React.FC = () => {
   return (
     <div className="relative bg-gray-50 py-20 px-4 md:px-16">
       {/* Heading */}
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="text-3xl md:text-4xl font-bold text-gray-800 mb-12 text-left"
-      >
-        Projects
-      </motion.h2>
+      <div className="relative mb-12 flex flex-col items-start">
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent
+                     bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          Projects
+        </motion.h2>
+
+        {/* Optional gradient underline */}
+        <motion.div
+          className="w-35 h-1 mt-2 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        />
+      </div>
 
       {/* Grid with staggered animation */}
       <motion.div

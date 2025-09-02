@@ -59,10 +59,26 @@ const ContactPage: React.FC = () => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+        <motion.h1
+          className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent
+               bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           Connect with Me
-        </h1>
-        <p className="text-gray-600 mb-8">
+        </motion.h1>
+
+        {/* Optional gradient underline */}
+        <motion.div
+          className="ml-32 w-80 h-1 mt-2 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        />
+
+        <p className="text-gray-600 mb-8 mt-4">
           I’m always open to discussing AI, NLP, LLMs, ML, Data Science and Web
           Projects or Freelance opportunities. Send me a message below or reach
           me via social links.
