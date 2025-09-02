@@ -7,6 +7,7 @@ import AboutPage from "../pages/About/About.tsx";
 import ContactPage from "../pages/Contact/ContactPage.tsx";
 import ToolsPage from "../pages/Tools/ToolsPage.tsx";
 import ScrollToTop from "../utils/ScrollToTop.tsx";
+import SkillsPage from "../pages/Skills/SkillsPage.tsx";
 
 const MainLayout: React.FC = () => {
   return (
@@ -31,13 +32,14 @@ const MainLayout: React.FC = () => {
           className="overflow-y-auto" //  p-6 mt-8
           id="main-content" // bg-gradient-to-br from-gray-50 via-white to-gray-100
         >
-          <div className="max-w-5xl mx-auto w-full md:pt-40">
+          <div className="max-w-5xl mx-auto w-full md:pt-30">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/skills" element={<SkillsPage />} />
               <Route path="/tools" element={<ToolsPage />} />
             </Routes>
           </div>

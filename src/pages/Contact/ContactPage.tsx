@@ -60,7 +60,7 @@ const ContactPage: React.FC = () => {
         viewport={{ once: true }}
       >
         <motion.h1
-          className="text-3xl md:text-4xl font-bold mb-6 bg-clip-text text-transparent
+          className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent
                bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
           initial={{ opacity: 0, y: -20, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -78,10 +78,9 @@ const ContactPage: React.FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         />
 
-        <p className="text-gray-600 mb-8 mt-4">
-          I’m always open to discussing AI, NLP, LLMs, ML, Data Science and Web
-          Projects or Freelance opportunities. Send me a message below or reach
-          me via social links.
+        <p className="text-gray-600 font-medium mb-4 mt-4 text-left">
+          Open to AI, NLP, LLMs, ML, Data Science & Freelance projects — let’s
+          connect!
         </p>
         <ContactForm />
       </motion.div>

@@ -10,6 +10,7 @@ import {
   FolderIcon,
   UserIcon,
   PhoneIcon,
+  BoltIcon,
   WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
 import ProfileHeader from "./PortfolioHeader";
@@ -19,16 +20,9 @@ const Sidebar: React.FC = () => {
   const location = useLocation();
   const [active, setActive] = useState("Home");
 
-  // const links: NavLinkType[] = [
-  //   { label: "Home", path: "/#/", Icon: HomeIcon },
-  //   { label: "Experience", path: "/#/experience", Icon: BriefcaseIcon },
-  //   { label: "Projects", path: "/#/projects", Icon: FolderIcon },
-  //   { label: "About", path: "/#/about", Icon: UserIcon },
-  //   { label: "Contact", path: "/#/contact", Icon: PhoneIcon },
-  //   { label: "Tools", path: "/#/tools", Icon: WrenchScrewdriverIcon },
-  // ];
   const links: NavLinkType[] = [
     { label: "Home", path: "/", Icon: HomeIcon },
+    { label: "Skills", path: "/skills", Icon: BoltIcon },
     { label: "Experience", path: "/experience", Icon: BriefcaseIcon },
     { label: "Projects", path: "/projects", Icon: FolderIcon },
     { label: "About", path: "/about", Icon: UserIcon },
@@ -42,6 +36,7 @@ const Sidebar: React.FC = () => {
   //   const currentLink = links.find((link) => link.path.endsWith(hashPath));
   //   if (currentLink) setActive(currentLink.label);
   // }, [location]);
+
   useEffect(() => {
     const currentPath = location.pathname;
     const currentLink = links.find((link) => link.path === currentPath);
@@ -59,11 +54,11 @@ const Sidebar: React.FC = () => {
       icon: <FaGithub />,
       url: "https://github.com/your-profile",
     },
-    {
-      name: "Twitter",
-      icon: <FaTwitter />,
-      url: "https://twitter.com/your-profile",
-    },
+    // {
+    //   name: "Twitter",
+    //   icon: <FaTwitter />,
+    //   url: "https://twitter.com/your-profile",
+    // },
     {
       name: "Instagram",
       icon: <FaInstagram />,
@@ -88,7 +83,7 @@ const Sidebar: React.FC = () => {
         ))}
       </nav>
 
-      <div className="relative z-10 mt-40">
+      <div className="relative z-10 mt-0">
         <SidebarConnect links={socialLinks} />
       </div>
     </aside>

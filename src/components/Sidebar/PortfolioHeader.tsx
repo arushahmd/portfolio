@@ -21,7 +21,7 @@ const ProfileHeader: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center gap-4 relative z-10 pt-10">
+    <div className="flex items-center gap-4 relative z-10 pt-8">
       {/* Profile Picture */}
       <div className="relative flex-shrink-0 w-10 h-10">
         <img

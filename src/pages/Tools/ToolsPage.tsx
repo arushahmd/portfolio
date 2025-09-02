@@ -15,7 +15,7 @@ const item = {
 const ToolsPage: React.FC = () => {
   return (
     <motion.div
-      className="min-h-screen flex flex-col items-center "
+      className="flex flex-col items-center "
       initial="hidden"
       animate="show"
       variants={container}
