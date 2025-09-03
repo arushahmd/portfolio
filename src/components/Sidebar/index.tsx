@@ -30,13 +30,6 @@ const Sidebar: React.FC = () => {
     { label: "Tools", path: "/tools", Icon: WrenchScrewdriverIcon },
   ];
 
-  // Update active state when location changes
-  // useEffect(() => {
-  //   const hashPath = location.hash ? location.hash.replace("#", "") : "/";
-  //   const currentLink = links.find((link) => link.path.endsWith(hashPath));
-  //   if (currentLink) setActive(currentLink.label);
-  // }, [location]);
-
   useEffect(() => {
     const currentPath = location.pathname;
     const currentLink = links.find((link) => link.path === currentPath);
@@ -47,12 +40,12 @@ const Sidebar: React.FC = () => {
     {
       name: "LinkedIn",
       icon: <FaLinkedin />,
-      url: "https://linkedin.com/in/your-profile",
+      url: "https://linkedin.com/in/arushahmd",
     },
     {
       name: "GitHub",
       icon: <FaGithub />,
-      url: "https://github.com/your-profile",
+      url: "https://github.com/arushahmd",
     },
     // {
     //   name: "Twitter",
@@ -62,7 +55,7 @@ const Sidebar: React.FC = () => {
     {
       name: "Instagram",
       icon: <FaInstagram />,
-      url: "https://instagram.com/your-profile",
+      url: "https://instagram.com/arus_hahmd",
     },
   ];
 
