@@ -23,13 +23,27 @@ const SkillsPage: React.FC = () => {
       variants={container}
     >
       {/* Section Heading */}
-      <motion.h1
-        className="text-3xl text-left md:text-4xl font-bold mb-6 bg-clip-text text-transparent 
-                   bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
-        variants={item}
-      >
-        Skills
-      </motion.h1>
+      {/* Heading */}
+      <div className="relative mb-6 flex flex-col items-start">
+        <motion.h2
+          className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent
+                     bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+          initial={{ opacity: 0, y: -20, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          Skills
+        </motion.h2>
+
+        {/* Optional gradient underline */}
+        <motion.div
+          className="w-23 h-1 mt-2 rounded-full bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400"
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        />
+      </div>
 
       {/* Categories in responsive grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
