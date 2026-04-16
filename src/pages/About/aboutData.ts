@@ -1,48 +1,24 @@
-const aboutData = {
-  paragraphs: [
-    "I am a passionate AI Engineer with expertise in NLP, LLMs, Computer Vision, and building production-grade AI systems.",
-    "I have led projects in OCR, GPT-powered assistants, YOLO pipelines, and AI-based automation.",
-    "I focus on delivering reliable, elegant, and trustworthy solutions.",
+export const about = {
+  bio: [
+    "I'm an AI/ML Engineer with 3+ years building production systems — not proofs of concept. I've shipped real-time voice AI at Cygnus Payments (Virginia, USA), OCR engines used in production at the Center of Language Engineering, and delivered 20+ AI/ML solutions to international clients.",
+    "Currently pursuing an MPhil in Artificial Intelligence at PUCIT while working full-time in US timezones. I specialise in the hard parts: latency, accuracy, and actually shipping.",
   ],
-  skills: [
-    "Python",
-    "PyTorch",
-    "TensorFlow",
-    "OpenCV",
-    "Hugging Face",
-    "LangChain",
-    "Django REST",
-    "Azure ML",
-    "NLP",
-    "LLMs",
+  traits: [
+    { icon: "⚡", title: "Production-First", desc: "Every system I build is designed to deploy, scale, and hold up under real load." },
+    { icon: "🎯", title: "Metrics-Driven",   desc: "98% accuracy. <1s latency. 99% effort reduction. I measure everything." },
+    { icon: "🔬", title: "Research + Eng",   desc: "Co-authored OCR research at CLE, applied directly in production systems." },
+    { icon: "🌍", title: "Remote-Ready",     desc: "Currently collaborating across US timezones seamlessly from Lahore." },
   ],
-  cards: [
-    {
-      title: "Problem Solver",
-      description:
-        "I enjoy solving complex AI challenges creatively and efficiently.",
-    },
-    {
-      title: "AI Researcher",
-      description:
-        "Passionate about LLMs, NLP research, and exploring cutting-edge AI techniques.",
-    },
-    {
-      title: "Full-Stack Enthusiast",
-      description:
-        "Experience building web applications and AI products for clients around the world.",
-    },
-    {
-      title: "Collaborator",
-      description:
-        "Skilled at working with cross-functional teams to deploy AI and web systems globally.",
-    },
-    // {
-    //   title: "Continuous Learner",
-    //   description:
-    //     "I love learning new technologies, exploring AI advancements, and practicing coding daily.",
-    // },
+  education: [
+    { degree: "MPhil, Artificial Intelligence", school: "PUCIT, Lahore",             year: "2024–2026" },
+    { degree: "BS Computer Science",            school: "Lahore Garrison University", year: "2017–2021" },
+  ],
+  certifications: [
+    { name: "AI Engineer for Data Scientists Associate", issuer: "DataCamp" },
+    { name: "Machine Learning with Python",              issuer: "Coursera"  },
+    { name: "Deep Learning with Keras",                  issuer: "Coursera"  },
+    { name: "Huawei AI Associate (HCIA-AI)",             issuer: "Huawei"    },
   ],
 };
 
-export default aboutData;
+export default about;
