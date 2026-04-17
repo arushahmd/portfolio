@@ -1,7 +1,7 @@
 // src/pages/SkillsPage.tsx
 import { motion } from "framer-motion";
 import SkillCard from "./SkillCard";
-import { skillsData } from "./skillsData";
+import { skillGroups } from "./skillsData";
 
 const container = {
   hidden: { opacity: 0 },
@@ -47,14 +47,14 @@ const SkillsPage: React.FC = () => {
 
       {/* Categories in responsive grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {skillsData.map((category, idx) => (
+        {skillGroups.map((category, idx: number) => (
           <motion.div key={idx} variants={item}>
             <h2 className="text-xl text-left font-semibold text-gray-800 mb-3">
               {category.category}
             </h2>
             <div className="flex flex-wrap gap-5">
-              {category.skills.map((skill, i) => (
-                <SkillCard key={i} {...skill} />
+              {category.chips.map((skill: string, i: number) => (
+                <SkillCard key={i} label={skill} />
               ))}
             </div>
           </motion.div>

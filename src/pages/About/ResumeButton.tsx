@@ -1,10 +1,11 @@
 import { FiDownload } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { personal } from "../Home/personal";
 
 const ResumeButton: React.FC = () => {
   return (
     <motion.a
-      href={`${import.meta.env.BASE_URL}Aroosh_Ahmad_AI_Engineer.pdf`}
+      href={personal.resumeUrl}
       target="_blank"
       rel="noopener noreferrer"
       whileHover={{ scale: 1.05, boxShadow: "0 4px 14px rgba(109,40,217,0.4)" }}

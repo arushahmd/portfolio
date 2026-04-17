@@ -1,9 +1,9 @@
 // src/pages/Experience/experienceData.ts
-import logoCygnus  from "../../assets/logo-cygnus.svg";
+import logoCygnus  from "../../assets/logo-cygnus.png";
 import logoCle     from "../../assets/logo-cle.svg";
-import logoNodlays from "../../assets/logo-nodlays.svg";
-import logoHighbit from "../../assets/logo-highbit.svg";
-import logoKics    from "../../assets/logo-kics.svg";
+import logoNodlays from "../../assets/logo-nodlays.jpg";
+import logoHighbit from "../../assets/logo-highbit.jpg";
+import logoKics    from "../../assets/logo-kics.png";
 import logoFiverr  from "../../assets/logo-fiverr.svg";
 
 export interface Experience {

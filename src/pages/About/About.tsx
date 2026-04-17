@@ -3,6 +3,7 @@ import SkillBadge from "./SkillBadge";
 import ResumeButton from "./ResumeButton";
 import AboutCard from "./AboutCard";
 import aboutData from "./aboutData";
+import { skillGroups } from "../Skills/skillsData";
 import { FiGithub, FiLinkedin } from "react-icons/fi";
 
 interface AboutPageProps {
@@ -10,6 +11,8 @@ interface AboutPageProps {
 }
 
 const AboutPage: React.FC<AboutPageProps> = ({ showIllustration = false }) => {
+  const featuredSkills = skillGroups.flatMap((group) => group.chips).slice(0, 12);
+
   return (
     <div className="relative bg-gray-50 py-20 px-4 md:px-16  md:py-0 flex flex-col md:flex-row gap-8">
       {/* Left Content */}
@@ -29,7 +32,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ showIllustration = false }) => {
         </motion.h1>
 
         {/* Bio Paragraphs */}
-        {aboutData.paragraphs.map((para, idx) => (
+        {aboutData.bio.map((para: string, idx: number) => (
           <motion.p
             key={idx}
             className="text-gray-600 text-sm md:text-base leading-relaxed"
@@ -43,11 +46,11 @@ const AboutPage: React.FC<AboutPageProps> = ({ showIllustration = false }) => {
 
         {/* Interactive Cards */}
         <div className="flex flex-wrap gap-4 mt-4">
-          {aboutData.cards.map((card, idx) => (
+          {aboutData.traits.map((card, idx: number) => (
             <AboutCard
               key={idx}
-              title={card.title}
-              description={card.description}
+              title={`${card.icon} ${card.title}`}
+              description={card.desc}
             />
           ))}
         </div>
@@ -58,7 +61,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ showIllustration = false }) => {
             Skills
           </h2>
           <div className="flex flex-wrap gap-3">
-            {aboutData.skills.map((skill, idx) => (
+            {featuredSkills.map((skill: string, idx: number) => (
               <SkillBadge key={idx} skill={skill} />
             ))}
           </div>

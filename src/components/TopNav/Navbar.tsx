@@ -2,8 +2,19 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { personal, navSections } from "../../pages/Home/personal";
 import profileImg from "../../assets/profile.png";
+import ThemeToggle, { type ThemePreference } from "./ThemeToggle";
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  themePreference: ThemePreference;
+  resolvedTheme: "light" | "dark";
+  onToggleTheme: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({
+  themePreference,
+  resolvedTheme,
+  onToggleTheme,
+}) => {
   const [scrolled, setScrolled]   = useState(false);
   const [activeId, setActiveId]   = useState("");
   const [menuOpen, setMenuOpen]   = useState(false);
@@ -84,6 +95,12 @@ const Navbar: React.FC = () => {
             ))}
           </div>
 
+          <ThemeToggle
+            preference={themePreference}
+            resolvedTheme={resolvedTheme}
+            onToggle={onToggleTheme}
+          />
+
           {/* Hire Me CTA */}
           <button
             onClick={() => scrollTo("contact")}
@@ -117,6 +134,13 @@ const Navbar: React.FC = () => {
           className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-slate-200 shadow-lg md:hidden"
         >
           <div className="flex flex-col p-4 gap-1">
+            <div className="mb-2">
+              <ThemeToggle
+                preference={themePreference}
+                resolvedTheme={resolvedTheme}
+                onToggle={onToggleTheme}
+              />
+            </div>
             {navSections.map(({ label, id }) => (
               <button
                 key={id}

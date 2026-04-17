@@ -1,12 +1,13 @@
-// src/pages/SkillCard.tsx
 import React, { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { Skill } from "./skillsData";
 
 const MotionDiv = motion.div;
 
-// SkillCard.tsx
-const SkillCard: React.FC<Skill> = ({ name, icon: Icon }) => {
+interface SkillCardProps {
+  label: string;
+}
+
+const SkillCard: React.FC<SkillCardProps> = ({ label }) => {
   const [visible, setVisible] = useState(false);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const touchTimeout = useRef<number | null>(null);
@@ -43,7 +44,7 @@ const SkillCard: React.FC<Skill> = ({ name, icon: Icon }) => {
       <MotionDiv
         role="button"
         tabIndex={0}
-        aria-label={name}
+        aria-label={label}
         onMouseEnter={() => setVisible(true)}
         onMouseLeave={() => setVisible(false)}
         onFocus={() => setVisible(true)}
@@ -58,7 +59,9 @@ const SkillCard: React.FC<Skill> = ({ name, icon: Icon }) => {
           transition-all duration-300
         `}
       >
-        <Icon className="w-8 h-8 text-gray-700 group-focus:text-[#6D28D9] group-hover:text-[#6D28D9] transition-colors" />
+        <span className="px-3 text-center text-sm font-semibold text-gray-700 group-focus:text-[#6D28D9] group-hover:text-[#6D28D9] transition-colors">
+          {label}
+        </span>
       </MotionDiv>
 
       {/* Tooltip */}
@@ -79,7 +82,7 @@ const SkillCard: React.FC<Skill> = ({ name, icon: Icon }) => {
           >
             {/* small triangular caret rotated 45deg */}
             <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-white shadow-[0_6px_16px_rgba(109,40,217,0.12)]" />
-            <span className="relative z-10">{name}</span>
+            <span className="relative z-10">{label}</span>
           </motion.div>
         )}
       </AnimatePresence>

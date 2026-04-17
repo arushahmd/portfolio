@@ -1,12 +1,26 @@
 import { motion } from "framer-motion";
-import { personal, metrics } from "./personal";
-import profileImg from "../../assets/profile.png";
+import {
+  FiArrowRight,
+  FiDownload,
+  FiGithub,
+  FiLinkedin,
+  FiMail,
+  FiMessageSquare,
+} from "react-icons/fi";
+import { hero, metrics, personal, proofPoints, recruiterLinks } from "./personal";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
   transition: { duration: 0.55, delay, ease: "easeOut" },
 });
+
+const iconMap = {
+  GitHub: <FiGithub className="w-4 h-4" />,
+  LinkedIn: <FiLinkedin className="w-4 h-4" />,
+  Email: <FiMail className="w-4 h-4" />,
+  WhatsApp: <FiMessageSquare className="w-4 h-4" />,
+};
 
 const HeroSection: React.FC = () => {
   const scrollTo = (id: string) => {
@@ -19,66 +33,50 @@ const HeroSection: React.FC = () => {
       id="hero"
       className="min-h-screen flex flex-col justify-center px-6 pt-24 pb-16 max-w-6xl mx-auto"
     >
-      {/* Profile card + open-to-work */}
-      <motion.div {...fadeUp(0)} className="flex items-center gap-4 mb-8">
-        {/* Avatar */}
-        <div className="relative shrink-0">
-          <div className="w-16 h-16 rounded-2xl overflow-hidden ring-2 ring-indigo-100 shadow-md">
-            <img src={profileImg} alt="Aroosh Ahmad" className="w-full h-full object-cover" />
-          </div>
-          {/* Online dot */}
-          <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-white" />
-        </div>
-
-        {/* Status badge */}
-        <div>
-          <div className="text-sm font-semibold text-slate-900 mb-0.5">{personal.name}</div>
-          <span className="inline-flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Open to remote · AI/ML Engineer · Lahore → US Timezones
-          </span>
-        </div>
+      <motion.div {...fadeUp(0)} className="mb-6">
+        <span className="inline-flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          Open to remote · AI/ML Engineer · Lahore {"->"} US time zones
+        </span>
       </motion.div>
 
-      {/* Heading */}
-      <motion.h1
-        {...fadeUp(0.1)}
-        className="leading-none text-slate-900 mb-3"
-        style={{
-          fontFamily: "'Instrument Serif', Georgia, serif",
-          fontSize: "clamp(56px, 10vw, 96px)",
-          fontWeight: 400,
-        }}
-      >
-        {personal.name.split(" ")[0]}
-        <br />
-        <em className="text-indigo-600 not-italic">{personal.name.split(" ")[1]}.</em>
-      </motion.h1>
+      <motion.div {...fadeUp(0.08)} className="mb-5">
+        <div className="font-mono text-xs uppercase tracking-[0.28em] text-indigo-500 mb-4">
+          Applied ML · Production systems · Shipped impact
+        </div>
+        <h1
+          className="leading-none text-slate-900 mb-3"
+          style={{
+            fontFamily: "'Instrument Serif', Georgia, serif",
+            fontSize: "clamp(56px, 10vw, 96px)",
+            fontWeight: 400,
+          }}
+        >
+          {personal.name.split(" ")[0]}
+          <br />
+          <em className="text-indigo-600 not-italic">{personal.name.split(" ")[1]}.</em>
+        </h1>
+      </motion.div>
 
-      {/* Role */}
-      <motion.p {...fadeUp(0.2)} className="text-lg md:text-xl text-slate-500 font-light mb-8">
-        <span className="text-slate-800 font-medium">Full Stack AI Developer</span>
-        {" · "}NLP{" · "}LLMs{" · "}Computer Vision{" · "}Voice AI
-      </motion.p>
+      <motion.div {...fadeUp(0.16)} className="mb-8 max-w-3xl">
+        <p className="text-2xl md:text-[30px] text-slate-900 font-medium tracking-tight mb-3">
+          {hero.headline}
+        </p>
+        <p className="text-base md:text-lg text-slate-500">{hero.subheadline}</p>
+      </motion.div>
 
-      {/* Tagline */}
-      <motion.p
-        {...fadeUp(0.3)}
-        className="text-base md:text-lg text-slate-500 max-w-2xl leading-relaxed mb-12 border-l-2 border-indigo-400 pl-5"
-      >
-        I build{" "}
-        <strong className="text-slate-800 font-medium">production-grade AI systems</strong>
-        {" "}— not demos. From real-time voice ordering at{" "}
-        <strong className="text-slate-800 font-medium">Cygnus Payments</strong> (Virginia, USA) to
-        OCR engines deployed at the{" "}
-        <strong className="text-slate-800 font-medium">Center of Language Engineering</strong>,
-        I take AI from research to shipped.
-      </motion.p>
+      <motion.div {...fadeUp(0.24)} className="max-w-3xl mb-12">
+        <p className="text-base md:text-lg text-slate-500 leading-relaxed mb-4 border-l-2 border-indigo-400 pl-5">
+          {hero.summary}
+        </p>
+        <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed">
+          <span className="text-slate-900 font-medium">Recruiter summary:</span> {hero.recruiterNote}
+        </p>
+      </motion.div>
 
-      {/* Metrics */}
       <motion.div
-        {...fadeUp(0.4)}
-        className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mb-12"
+        {...fadeUp(0.32)}
+        className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mb-10"
       >
         {metrics.map((m) => (
           <div
@@ -96,25 +94,21 @@ const HeroSection: React.FC = () => {
         ))}
       </motion.div>
 
-      {/* CTAs */}
-      <motion.div {...fadeUp(0.5)} className="flex flex-wrap gap-3">
+      <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-3 mb-5">
         <button
           onClick={() => scrollTo("projects")}
           className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-200 cursor-pointer"
         >
           View Projects
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M3 8h10M9 4l4 4-4 4" />
-          </svg>
+          <FiArrowRight className="w-4 h-4" />
         </button>
         <a
           href={personal.resumeUrl}
-          download
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center gap-2 px-6 py-3 bg-white border border-slate-300 hover:border-indigo-400 text-slate-700 hover:text-indigo-600 text-sm font-medium rounded-lg transition-all duration-150"
         >
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M8 2v8M4 7l4 4 4-4M2 13h12" />
-          </svg>
+          <FiDownload className="w-4 h-4" />
           Resume
         </a>
         <button
@@ -123,6 +117,50 @@ const HeroSection: React.FC = () => {
         >
           Let's Talk
         </button>
+      </motion.div>
+
+      <motion.div {...fadeUp(0.48)} className="flex flex-wrap gap-2.5 mb-12">
+        {recruiterLinks.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            download={link.download}
+            target={link.external && !link.href.startsWith("mailto") ? "_blank" : undefined}
+            rel={link.external && !link.href.startsWith("mailto") ? "noopener noreferrer" : undefined}
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/50 transition-all duration-150"
+          >
+            {iconMap[link.label as keyof typeof iconMap]}
+            {link.label}
+          </a>
+        ))}
+      </motion.div>
+
+      <motion.div
+        {...fadeUp(0.56)}
+        className="max-w-4xl rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm p-5 md:p-6 mb-12"
+      >
+        <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-indigo-500 mb-3">
+          Current Focus
+        </div>
+        <p className="text-sm md:text-base text-slate-600 leading-relaxed">{hero.currentFocus}</p>
+      </motion.div>
+
+      <motion.div
+        {...fadeUp(0.64)}
+        className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl"
+      >
+        {proofPoints.map((point) => (
+          <div
+            key={point.title}
+            className="rounded-2xl border border-slate-200 bg-white p-5 hover:border-indigo-300 hover:-translate-y-1 transition-all duration-200"
+          >
+            <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-indigo-500 mb-3">
+              {point.eyebrow}
+            </div>
+            <h3 className="text-slate-900 font-semibold text-lg mb-2">{point.title}</h3>
+            <p className="text-sm text-slate-500 leading-relaxed">{point.detail}</p>
+          </div>
+        ))}
       </motion.div>
     </section>
   );

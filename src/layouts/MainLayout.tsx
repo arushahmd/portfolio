@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import HeroSection      from "../pages/Home/HeroSection";
 import ExperienceSection from "../pages/Experience/ExperienceSection";
 import ProjectsSection   from "../pages/Projects/ProjectsSection";
@@ -6,6 +7,9 @@ import AboutSection      from "../pages/About/AboutSection";
 import ContactSection    from "../pages/Contact/ContactSection";
 import Navbar            from "../components/TopNav/Navbar";
 import { personal }      from "../pages/Home/personal";
+import type { ThemePreference } from "../components/TopNav/ThemeToggle";
+
+const THEME_STORAGE_KEY = "portfolio-theme-preference";
 
 const Divider = () => (
   <div className="max-w-6xl mx-auto px-6">
@@ -38,23 +42,73 @@ const Footer = () => (
   </footer>
 );
 
-const MainLayout: React.FC = () => (
-  <div className="bg-slate-50 min-h-screen">
-    <Navbar />
-    <HeroSection />
-    <Divider />
-    <ExperienceSection />
-    <Divider />
-    <ProjectsSection />
-    <Divider />
-    <SkillsSection />
-    <Divider />
-    <AboutSection />
-    <Divider />
-    <ContactSection />
-    <Divider />
-    <Footer />
-  </div>
-);
+const MainLayout: React.FC = () => {
+  const [themePreference, setThemePreference] = useState<ThemePreference>("light");
+  const [systemPrefersDark, setSystemPrefersDark] = useState(false);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(THEME_STORAGE_KEY) as ThemePreference | null;
+    if (stored === "light" || stored === "dark" || stored === "system") {
+      setThemePreference(stored);
+    }
+
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    const syncSystemTheme = (event?: MediaQueryListEvent) => {
+      setSystemPrefersDark(event ? event.matches : media.matches);
+    };
+
+    syncSystemTheme();
+    media.addEventListener("change", syncSystemTheme);
+    return () => media.removeEventListener("change", syncSystemTheme);
+  }, []);
+
+  const resolvedTheme = useMemo<"light" | "dark">(
+    () =>
+      themePreference === "system"
+        ? systemPrefersDark
+          ? "dark"
+          : "light"
+        : themePreference,
+    [systemPrefersDark, themePreference]
+  );
+
+  useEffect(() => {
+    window.localStorage.setItem(THEME_STORAGE_KEY, themePreference);
+    document.documentElement.classList.remove("theme-light", "theme-dark");
+    document.documentElement.classList.add(
+      resolvedTheme === "dark" ? "theme-dark" : "theme-light"
+    );
+    document.documentElement.style.colorScheme = resolvedTheme;
+  }, [resolvedTheme, themePreference]);
+
+  const toggleTheme = () => {
+    setThemePreference((current) =>
+      current === "light" ? "dark" : current === "dark" ? "system" : "light"
+    );
+  };
+
+  return (
+    <div className="bg-slate-50 min-h-screen transition-colors duration-300">
+      <Navbar
+        themePreference={themePreference}
+        resolvedTheme={resolvedTheme}
+        onToggleTheme={toggleTheme}
+      />
+      <HeroSection />
+      <Divider />
+      <ExperienceSection />
+      <Divider />
+      <ProjectsSection />
+      <Divider />
+      <SkillsSection />
+      <Divider />
+      <AboutSection />
+      <Divider />
+      <ContactSection />
+      <Divider />
+      <Footer />
+    </div>
+  );
+};
 
 export default MainLayout;

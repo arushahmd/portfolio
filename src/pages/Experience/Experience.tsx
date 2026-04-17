@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { experiences } from "./experienceData";
+import { experiences, type Experience } from "./experienceData";
 import ExperienceItem from "./ExperienceItem";
 
 const Experience: React.FC = () => {
@@ -42,7 +42,7 @@ const Experience: React.FC = () => {
         viewport={{ once: true }}
         className="relative border-l-2 border-purple-600 ml-4 md:ml-8 origin-top"
       >
-        {experiences.map((exp: any, idx: number) => (
+        {experiences.map((exp: Experience, idx: number) => (
           <motion.div
             key={idx}
             initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}

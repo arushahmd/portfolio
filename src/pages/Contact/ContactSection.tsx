@@ -3,11 +3,10 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { personal } from "../Home/personal";
 
-// ── Update these with your EmailJS credentials ──────────────────
-const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
-const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";
-// ────────────────────────────────────────────────────────────────
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL || personal.email;
 
 const channels = [
   {
@@ -67,13 +66,41 @@ type Status = "idle" | "sending" | "sent" | "error";
 const ContactSection: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<Status>("idle");
+  const emailConfigured =
+    Boolean(EMAILJS_SERVICE_ID) &&
+    Boolean(EMAILJS_TEMPLATE_ID) &&
+    Boolean(EMAILJS_PUBLIC_KEY);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
+    if (!emailConfigured) {
+      const formData = new FormData(formRef.current);
+      const name = String(formData.get("from_name") || "").trim();
+      const email = String(formData.get("reply_to") || "").trim();
+      const message = String(formData.get("message") || "").trim();
+      const subject = encodeURIComponent(`Portfolio inquiry from ${name || "a visitor"}`);
+      const body = encodeURIComponent(
+        [
+          `Name: ${name}`,
+          `Email: ${email}`,
+          "",
+          "Message:",
+          message,
+        ].join("\n")
+      );
+      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+      return;
+    }
+
     setStatus("sending");
     try {
-      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY);
+      await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        EMAILJS_PUBLIC_KEY
+      );
       setStatus("sent");
       formRef.current.reset();
     } catch {
@@ -103,10 +130,14 @@ const ContactSection: React.FC = () => {
         <p className="text-slate-500 text-base max-w-lg">
           Open to FAANG-tier remote roles, senior AI/ML positions, and select consulting projects.
         </p>
+        {!emailConfigured && (
+          <p className="text-slate-500 text-sm mt-3 max-w-2xl">
+            Submit opens the visitor's mail app with a prefilled message to you.
+          </p>
+        )}
       </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        {/* Form */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,48 +145,70 @@ const ContactSection: React.FC = () => {
           viewport={{ once: true }}
         >
           <p className="text-slate-500 text-sm leading-relaxed mb-6">
-            Looking for an engineer who ships <strong className="text-slate-800 font-medium">real AI systems</strong> — voice, vision, NLP, LLMs.
+            Looking for an engineer who ships <strong className="text-slate-800 font-medium">real AI systems</strong> - voice, vision, NLP, and LLMs.
             Available for full-time remote roles. Based in Lahore, working{" "}
-            <strong className="text-slate-800 font-medium">US timezones</strong>.
+            <strong className="text-slate-800 font-medium">US time zones</strong>.
           </p>
           <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input type="hidden" name="to_email" value={CONTACT_EMAIL} />
+            <input type="hidden" name="owner_email" value={CONTACT_EMAIL} />
+            <input type="hidden" name="subject" value="New portfolio contact request" />
+            <input type="hidden" name="site_name" value="Aroosh Ahmad Portfolio" />
+
             <div>
               <label className="font-mono text-[10px] text-slate-400 uppercase tracking-widest block mb-1.5">Name</label>
               <input
-                name="from_name" type="text" required placeholder="Your name"
+                name="from_name"
+                type="text"
+                required
+                placeholder="Your name"
                 className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition-all"
               />
             </div>
             <div>
               <label className="font-mono text-[10px] text-slate-400 uppercase tracking-widest block mb-1.5">Email</label>
               <input
-                name="reply_to" type="email" required placeholder="your@company.com"
+                name="reply_to"
+                type="email"
+                required
+                placeholder="your@company.com"
                 className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition-all"
               />
             </div>
             <div>
               <label className="font-mono text-[10px] text-slate-400 uppercase tracking-widest block mb-1.5">Message</label>
               <textarea
-                name="message" required rows={4} placeholder="Tell me about the role or project..."
+                name="message"
+                required
+                rows={4}
+                placeholder="Tell me about the role or project..."
                 className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-100 transition-all resize-none"
               />
             </div>
             <button
-              type="submit" disabled={status === "sending" || status === "sent"}
+              type="submit"
+              disabled={status === "sending" || status === "sent"}
               className="w-full py-3 bg-indigo-600 hover:bg-indigo-700 disabled:opacity-60 text-white text-sm font-medium rounded-xl transition-all duration-150 hover:-translate-y-0.5 cursor-pointer"
             >
-              {status === "sending" ? "Sending..." : status === "sent" ? "✓ Sent!" : "Send Message →"}
+              {status === "sending"
+                ? "Sending..."
+                : status === "sent"
+                  ? "Sent!"
+                  : emailConfigured
+                    ? "Send Message ->"
+                    : "Continue in Email ->"}
             </button>
             {status === "error" && (
               <p className="text-xs text-red-500 text-center">
                 Something went wrong. Email me directly at{" "}
-                <a href={`mailto:${personal.email}`} className="underline">{personal.email}</a>
+                <a href={`mailto:${personal.email}`} className="underline">
+                  {personal.email}
+                </a>
               </p>
             )}
           </form>
         </motion.div>
 
-        {/* Channels */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -172,15 +225,25 @@ const ContactSection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-indigo-200 hover:bg-indigo-50/30 transition-all duration-150 group"
               >
-                <div className={`w-9 h-9 rounded-lg ${ch.bg} flex items-center justify-center shrink-0`} style={{ color: ch.color }}>
+                <div
+                  className={`w-9 h-9 rounded-lg ${ch.bg} flex items-center justify-center shrink-0`}
+                  style={{ color: ch.color }}
+                >
                   {ch.icon}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium text-slate-900">{ch.name}</div>
                   <div className="font-mono text-xs text-slate-400 truncate">{ch.handle}</div>
                 </div>
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2"
-                  className="text-slate-300 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-all shrink-0">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  className="text-slate-300 group-hover:text-indigo-400 group-hover:translate-x-0.5 transition-all shrink-0"
+                >
                   <path d="M3 8h10M9 4l4 4-4 4" />
                 </svg>
               </a>

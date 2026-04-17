@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import type { ExperienceItemType } from "./experienceData";
+import type { Experience } from "./experienceData";
 
 interface Props {
-  experience: ExperienceItemType;
+  experience: Experience;
   idx: number;
   expandedIndex: number | null;
   handleToggle: (idx: number) => void;
@@ -53,7 +53,7 @@ const ExperienceItem: React.FC<Props> = ({
               transition={{ duration: 0.4 }}
               className="list-disc list-inside text-gray-600 space-y-1 mt-2"
             >
-              {experience.achievements.map((item, i) => (
+              {experience.bullets.map((item: string, i: number) => (
                 <li key={i}>{item}</li>
               ))}
             </motion.ul>

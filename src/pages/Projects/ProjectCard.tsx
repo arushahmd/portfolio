@@ -50,9 +50,9 @@ const ProjectCard: React.FC<Props> = ({ project }) => {
           </p>
 
           {/* Tech stack */}
-          {project.techStack && (
+          {project.tags.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-4">
-              {project.techStack.map((tech, i) => (
+              {project.tags.map((tech: string, i: number) => (
                 <span
                   key={i}
                   className="bg-gradient-to-r from-purple-600 via-indigo-500 to-cyan-400 text-white px-3 py-1 rounded-full text-xs font-medium"
