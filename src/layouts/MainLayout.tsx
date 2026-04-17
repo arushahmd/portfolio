@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import HeroSection      from "../pages/Home/HeroSection";
 import ExperienceSection from "../pages/Experience/ExperienceSection";
 import ProjectsSection   from "../pages/Projects/ProjectsSection";
@@ -43,12 +43,12 @@ const Footer = () => (
 );
 
 const MainLayout: React.FC = () => {
-  const [themePreference, setThemePreference] = useState<ThemePreference>("light");
+  const [themePreference, setThemePreference] = useState<ThemePreference>("signal");
   const [systemPrefersDark, setSystemPrefersDark] = useState(false);
 
   useEffect(() => {
     const stored = window.localStorage.getItem(THEME_STORAGE_KEY) as ThemePreference | null;
-    if (stored === "light" || stored === "dark" || stored === "system") {
+    if (stored === "light" || stored === "system" || stored === "signal") {
       setThemePreference(stored);
     }
 
@@ -62,36 +62,30 @@ const MainLayout: React.FC = () => {
     return () => media.removeEventListener("change", syncSystemTheme);
   }, []);
 
-  const resolvedTheme = useMemo<"light" | "dark">(
-    () =>
+  useEffect(() => {
+    window.localStorage.setItem(THEME_STORAGE_KEY, themePreference);
+    document.documentElement.classList.remove("theme-light", "theme-dark", "theme-signal");
+    const activeTheme =
       themePreference === "system"
         ? systemPrefersDark
           ? "dark"
           : "light"
-        : themePreference,
-    [systemPrefersDark, themePreference]
-  );
-
-  useEffect(() => {
-    window.localStorage.setItem(THEME_STORAGE_KEY, themePreference);
-    document.documentElement.classList.remove("theme-light", "theme-dark");
-    document.documentElement.classList.add(
-      resolvedTheme === "dark" ? "theme-dark" : "theme-light"
-    );
-    document.documentElement.style.colorScheme = resolvedTheme;
-  }, [resolvedTheme, themePreference]);
+        : themePreference;
+    document.documentElement.classList.add(`theme-${activeTheme}`);
+    document.documentElement.style.colorScheme =
+      activeTheme === "signal" ? "dark" : activeTheme;
+  }, [systemPrefersDark, themePreference]);
 
   const toggleTheme = () => {
     setThemePreference((current) =>
-      current === "light" ? "dark" : current === "dark" ? "system" : "light"
+      current === "signal" ? "light" : current === "light" ? "system" : "signal"
     );
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen transition-colors duration-300">
+    <div className="app-shell bg-slate-50 min-h-screen transition-colors duration-300">
       <Navbar
         themePreference={themePreference}
-        resolvedTheme={resolvedTheme}
         onToggleTheme={toggleTheme}
       />
       <HeroSection />

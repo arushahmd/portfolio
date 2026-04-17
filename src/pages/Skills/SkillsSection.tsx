@@ -33,7 +33,7 @@ const SkillsSection: React.FC = () => (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: idx * 0.08 }}
           viewport={{ once: true }}
-          className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-indigo-200 hover:shadow-sm transition-all duration-200"
+          className="skills-card bg-white border border-slate-200 rounded-2xl p-6 hover:border-indigo-200 hover:shadow-sm transition-all duration-200"
         >
           <div className="flex items-center gap-3 mb-5">
             <div className="w-9 h-9 rounded-lg bg-indigo-50 flex items-center justify-center text-base shrink-0">

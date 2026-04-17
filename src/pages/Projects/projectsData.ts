@@ -54,7 +54,7 @@ export const projects: Project[] = [
     metric: "~98% accuracy",
     description:
       "CNN-LSTM OCR engine for Urdu, Arabic, and Farsi text recognition. CER reduced from 3.4% to 2.3%. NLP pipelines for document understanding and language translation. Deployed at CLE Lahore.",
-    images: [urduocrDesktop, urduocrUi, urduocrSpeech],
+    images: [urduocrUi, urduocrDesktop, urduocrSpeech],
     github: "https://github.com/arushahmd/urdu-ocr-media-utils",
     website: "https://tech.cle.org.pk/",
     tags: ["PyTorch", "CNN-LSTM", "OpenCV", "NLP", "Python"],
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     metric: "60% QA ↓",
     description:
       "YOLOv7 pipeline for semiconductor DataMatrix code recovery on Azure ML. 98%+ detection accuracy, restoring ~65% of distorted codes and significantly reducing manual verification.",
-    images: [dmHome, dmMain, dmProcess, dmReading],
+    images: [dmMain, dmProcess, dmHome, dmReading],
     github: "https://github.com/arushahmd",
     website: "https://digitho.com/solutions/digid-software-platform/",
     tags: ["YOLOv7", "Azure ML", "OpenCV", "Roboflow", "Python"],
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     metric: "50% effort ↓",
     description:
       "Low-latency AI pipeline for human pose recognition and correction across images, videos, and live streams. Production-ready performance for fitness, healthcare, and live event applications.",
-    images: [poseMain, poseMobile, poseResult1, poseResult2],
+    images: [poseMobile, poseMain, poseResult1, poseResult2],
     github: "https://github.com/arushahmd/pose-estimation-correction-ui-emgucv",
     tags: ["PyTorch", "OpenCV", "Computer Vision", "Python"],
   },

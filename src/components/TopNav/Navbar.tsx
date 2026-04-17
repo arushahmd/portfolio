@@ -6,13 +6,11 @@ import ThemeToggle, { type ThemePreference } from "./ThemeToggle";
 
 interface NavbarProps {
   themePreference: ThemePreference;
-  resolvedTheme: "light" | "dark";
   onToggleTheme: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({
   themePreference,
-  resolvedTheme,
   onToggleTheme,
 }) => {
   const [scrolled, setScrolled]   = useState(false);
@@ -97,7 +95,6 @@ const Navbar: React.FC<NavbarProps> = ({
 
           <ThemeToggle
             preference={themePreference}
-            resolvedTheme={resolvedTheme}
             onToggle={onToggleTheme}
           />
 
@@ -137,7 +134,6 @@ const Navbar: React.FC<NavbarProps> = ({
             <div className="mb-2">
               <ThemeToggle
                 preference={themePreference}
-                resolvedTheme={resolvedTheme}
                 onToggle={onToggleTheme}
               />
             </div>

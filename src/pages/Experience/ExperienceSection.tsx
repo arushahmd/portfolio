@@ -46,7 +46,7 @@ const ExperienceSection: React.FC = () => (
       </p>
     </motion.div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div className="max-w-5xl space-y-4">
       {experiences.map((exp, idx) => (
         <motion.div
           key={idx}
@@ -54,7 +54,7 @@ const ExperienceSection: React.FC = () => (
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: idx * 0.06 }}
           viewport={{ once: true }}
-          className={`relative bg-white border rounded-2xl p-7 hover:shadow-md transition-all duration-200 group overflow-hidden
+          className={`experience-card relative w-full bg-white border rounded-2xl p-7 hover:shadow-md transition-all duration-200 group overflow-hidden
             ${exp.current ? "border-indigo-200 hover:border-indigo-300" : "border-slate-200 hover:border-slate-300"}`}
         >
           {/* left accent */}

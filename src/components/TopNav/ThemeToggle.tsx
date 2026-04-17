@@ -1,33 +1,25 @@
-import { FiMonitor, FiMoon, FiSun } from "react-icons/fi";
+import { FiGrid, FiMonitor, FiSun } from "react-icons/fi";
 
-export type ThemePreference = "light" | "dark" | "system";
+export type ThemePreference = "signal" | "light" | "system";
 
 interface ThemeToggleProps {
   preference: ThemePreference;
-  resolvedTheme: "light" | "dark";
   onToggle: () => void;
 }
 
 const LABELS: Record<ThemePreference, string> = {
+  signal: "Signal",
   light: "Light",
-  dark: "Dark",
   system: "System",
 };
 
-const ThemeToggle: React.FC<ThemeToggleProps> = ({
-  preference,
-  resolvedTheme,
-  onToggle,
-}) => {
-  const icon =
-    preference === "system" ? (
-      <FiMonitor className="w-4 h-4" />
-    ) : resolvedTheme === "dark" ? (
-      <FiMoon className="w-4 h-4" />
-    ) : (
-      <FiSun className="w-4 h-4" />
-    );
+const ICONS: Record<ThemePreference, React.ReactNode> = {
+  signal: <FiGrid className="w-4 h-4" />,
+  light: <FiSun className="w-4 h-4" />,
+  system: <FiMonitor className="w-4 h-4" />,
+};
 
+const ThemeToggle: React.FC<ThemeToggleProps> = ({ preference, onToggle }) => {
   return (
     <button
       onClick={onToggle}
@@ -36,7 +28,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({
       aria-label={`Theme: ${LABELS[preference]}`}
       className="flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 bg-white/80 text-slate-600 hover:text-indigo-600 hover:border-indigo-300 transition-all duration-150 cursor-pointer"
     >
-      {icon}
+      {ICONS[preference]}
       <span className="hidden sm:inline text-sm font-medium">{LABELS[preference]}</span>
     </button>
   );

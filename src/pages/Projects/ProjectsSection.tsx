@@ -13,7 +13,7 @@ const ProjectCard: React.FC<{ project: Project; idx: number }> = ({ project, idx
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: idx * 0.06 }}
       viewport={{ once: true }}
-      className={`bg-white border rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200 group flex flex-col
+      className={`project-card bg-white border rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-lg transition-all duration-200 group flex flex-col
         ${project.featured ? "border-indigo-200" : "border-slate-200 hover:border-slate-300"}`}
     >
       {/* top accent for featured */}

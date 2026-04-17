@@ -47,7 +47,7 @@ const AboutSection: React.FC = () => (
           className="grid grid-cols-2 gap-3 mt-8"
         >
           {about.traits.map((t, i) => (
-            <div key={i} className="bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-200 transition-colors">
+            <div key={i} className="about-trait-card bg-white border border-slate-200 rounded-xl p-4 hover:border-indigo-200 transition-colors">
               <div className="text-xl mb-2">{t.icon}</div>
               <div className="text-sm font-semibold text-slate-900 mb-1">{t.title}</div>
               <div className="text-xs text-slate-500 leading-relaxed">{t.desc}</div>
@@ -65,7 +65,7 @@ const AboutSection: React.FC = () => (
         className="flex flex-col gap-4"
       >
         {/* Education */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5">
+        <div className="about-side-card bg-white border border-slate-200 rounded-2xl p-5">
           <p className="font-mono text-[10px] text-indigo-600 uppercase tracking-widest mb-4">Education</p>
           {about.education.map((e, i) => (
             <div key={i} className={`py-3 ${i < about.education.length - 1 ? "border-b border-slate-100" : ""}`}>
@@ -81,7 +81,7 @@ const AboutSection: React.FC = () => (
         </div>
 
         {/* Certifications */}
-        <div className="bg-white border border-slate-200 rounded-2xl p-5">
+        <div className="about-side-card bg-white border border-slate-200 rounded-2xl p-5">
           <p className="font-mono text-[10px] text-indigo-600 uppercase tracking-widest mb-4">Certifications</p>
           {about.certifications.map((c, i) => (
             <div key={i} className={`py-3 ${i < about.certifications.length - 1 ? "border-b border-slate-100" : ""}`}>

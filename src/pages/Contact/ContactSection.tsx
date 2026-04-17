@@ -128,7 +128,7 @@ const ContactSection: React.FC = () => {
           Let's Build.
         </h2>
         <p className="text-slate-500 text-base max-w-lg">
-          Open to FAANG-tier remote roles, senior AI/ML positions, and select consulting projects.
+          Open to applied AI, ML, NLP, and LLM engineering roles and collaborations.
         </p>
         {!emailConfigured && (
           <p className="text-slate-500 text-sm mt-3 max-w-2xl">
@@ -223,7 +223,7 @@ const ContactSection: React.FC = () => {
                 href={ch.url}
                 target={ch.url.startsWith("mailto") ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-indigo-200 hover:bg-indigo-50/30 transition-all duration-150 group"
+                className="contact-channel flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-indigo-200 hover:bg-indigo-50/30 transition-all duration-150 group"
               >
                 <div
                   className={`w-9 h-9 rounded-lg ${ch.bg} flex items-center justify-center shrink-0`}

@@ -8,6 +8,9 @@ import {
   FiMessageSquare,
 } from "react-icons/fi";
 import { hero, metrics, personal, proofPoints, recruiterLinks } from "./personal";
+import compassVoiceImg from "../../assets/project_images/compass-voice.svg";
+import menuparserImg from "../../assets/project_images/menuparser.svg";
+import flightAssistant from "../../assets/project_images/flight-assistant/flight-assistant.png";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -31,8 +34,53 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center px-6 pt-24 pb-16 max-w-6xl mx-auto"
+      className="hero-stage relative min-h-screen flex flex-col justify-center px-6 pt-24 pb-16 max-w-6xl mx-auto overflow-hidden"
     >
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-[-8%] top-20 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
+        <div className="absolute right-[-6%] top-28 h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="absolute left-[28%] top-44 h-64 w-64 rounded-full bg-amber-300/10 blur-3xl" />
+      </div>
+
+      <div className="pointer-events-none absolute right-6 top-28 hidden xl:block -z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 16, rotate: -8 }}
+          animate={{ opacity: 0.92, y: 0, rotate: -8 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          className="absolute right-44 top-16 w-64 rounded-2xl border border-white/10 bg-white/70 p-2 shadow-2xl backdrop-blur-md"
+        >
+          <img
+            src={compassVoiceImg}
+            alt=""
+            className="h-40 w-full rounded-xl object-cover opacity-90"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24, rotate: 6 }}
+          animate={{ opacity: 0.95, y: 0, rotate: 6 }}
+          transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+          className="absolute right-6 top-48 w-72 rounded-2xl border border-white/10 bg-white/75 p-2 shadow-2xl backdrop-blur-md"
+        >
+          <img
+            src={menuparserImg}
+            alt=""
+            className="h-44 w-full rounded-xl object-cover opacity-95"
+          />
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 24, rotate: -3 }}
+          animate={{ opacity: 0.8, y: 0, rotate: -3 }}
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          className="absolute right-16 top-[-8] w-60 rounded-2xl border border-white/10 bg-slate-950/80 p-2 shadow-2xl backdrop-blur-md"
+        >
+          <img
+            src={flightAssistant}
+            alt=""
+            className="h-36 w-full rounded-xl object-cover opacity-85"
+          />
+        </motion.div>
+      </div>
+
       <motion.div {...fadeUp(0)} className="mb-6">
         <span className="inline-flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -40,7 +88,7 @@ const HeroSection: React.FC = () => {
         </span>
       </motion.div>
 
-      <motion.div {...fadeUp(0.08)} className="mb-5">
+      <motion.div {...fadeUp(0.08)} className="mb-5 max-w-4xl">
         <div className="font-mono text-xs uppercase tracking-[0.28em] text-indigo-500 mb-4">
           Applied ML · Production systems · Shipped impact
         </div>
@@ -58,14 +106,14 @@ const HeroSection: React.FC = () => {
         </h1>
       </motion.div>
 
-      <motion.div {...fadeUp(0.16)} className="mb-8 max-w-3xl">
+      <motion.div {...fadeUp(0.16)} className="mb-8 max-w-4xl">
         <p className="text-2xl md:text-[30px] text-slate-900 font-medium tracking-tight mb-3">
           {hero.headline}
         </p>
         <p className="text-base md:text-lg text-slate-500">{hero.subheadline}</p>
       </motion.div>
 
-      <motion.div {...fadeUp(0.24)} className="max-w-3xl mb-12">
+      <motion.div {...fadeUp(0.24)} className="max-w-4xl mb-12">
         <p className="text-base md:text-lg text-slate-500 leading-relaxed mb-4 border-l-2 border-indigo-400 pl-5">
           {hero.summary}
         </p>
@@ -97,7 +145,7 @@ const HeroSection: React.FC = () => {
       <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-3 mb-5">
         <button
           onClick={() => scrollTo("projects")}
-          className="flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-200 cursor-pointer"
+          className="hero-primary-cta flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-200 cursor-pointer"
         >
           View Projects
           <FiArrowRight className="w-4 h-4" />
@@ -106,14 +154,14 @@ const HeroSection: React.FC = () => {
           href={personal.resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-6 py-3 bg-white border border-slate-300 hover:border-indigo-400 text-slate-700 hover:text-indigo-600 text-sm font-medium rounded-lg transition-all duration-150"
+          className="hero-secondary-cta flex items-center gap-2 px-6 py-3 bg-white border border-slate-300 hover:border-indigo-400 text-slate-700 hover:text-indigo-600 text-sm font-medium rounded-lg transition-all duration-150"
         >
           <FiDownload className="w-4 h-4" />
           Resume
         </a>
         <button
           onClick={() => scrollTo("contact")}
-          className="flex items-center gap-2 px-6 py-3 bg-white border border-slate-300 hover:border-indigo-400 text-slate-700 hover:text-indigo-600 text-sm font-medium rounded-lg transition-all duration-150 cursor-pointer"
+          className="hero-secondary-cta flex items-center gap-2 px-6 py-3 bg-white border border-slate-300 hover:border-indigo-400 text-slate-700 hover:text-indigo-600 text-sm font-medium rounded-lg transition-all duration-150 cursor-pointer"
         >
           Let's Talk
         </button>
@@ -127,7 +175,7 @@ const HeroSection: React.FC = () => {
             download={link.download}
             target={link.external && !link.href.startsWith("mailto") ? "_blank" : undefined}
             rel={link.external && !link.href.startsWith("mailto") ? "noopener noreferrer" : undefined}
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/50 transition-all duration-150"
+            className="hero-chip inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 hover:border-indigo-300 hover:text-indigo-600 hover:bg-indigo-50/50 transition-all duration-150"
           >
             {iconMap[link.label as keyof typeof iconMap]}
             {link.label}
@@ -137,7 +185,7 @@ const HeroSection: React.FC = () => {
 
       <motion.div
         {...fadeUp(0.56)}
-        className="max-w-4xl rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm p-5 md:p-6 mb-12"
+        className="hero-focus-panel max-w-4xl rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm p-5 md:p-6 mb-12"
       >
         <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-indigo-500 mb-3">
           Current Focus
@@ -152,7 +200,7 @@ const HeroSection: React.FC = () => {
         {proofPoints.map((point) => (
           <div
             key={point.title}
-            className="rounded-2xl border border-slate-200 bg-white p-5 hover:border-indigo-300 hover:-translate-y-1 transition-all duration-200"
+            className="proof-card rounded-2xl border border-slate-200 bg-white p-5 hover:border-indigo-300 hover:-translate-y-1 transition-all duration-200"
           >
             <div className="font-mono text-[10px] uppercase tracking-[0.24em] text-indigo-500 mb-3">
               {point.eyebrow}

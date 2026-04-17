@@ -2,8 +2,6 @@
 import logoCygnus  from "../../assets/logo-cygnus.png";
 import logoCle     from "../../assets/logo-cle.svg";
 import logoNodlays from "../../assets/logo-nodlays.jpg";
-import logoHighbit from "../../assets/logo-highbit.jpg";
-import logoKics    from "../../assets/logo-kics.png";
 import logoFiverr  from "../../assets/logo-fiverr.svg";
 
 export interface Experience {
@@ -35,6 +33,21 @@ export const experiences: Experience[] = [
     tags: ["FastAPI", "Twilio", "Deepgram", "DistilBERT", "spaCy", "Redis", "AWS", "Docker"],
   },
   {
+    company: "Independent Research",
+    role: "LLM Research Engineer (Independent)",
+    duration: "June 2025 – Present",
+    location: "Lahore, Pakistan",
+    logo: logoCle,
+    bullets: [
+      "Designed and implemented an end-to-end instruction fine-tuning pipeline for Flan-T5 using LoRA adapters with Hugging Face Transformers",
+      "Built a semantic batching system with Sentence Transformers and FAISS to construct similarity-based mini-batches for training",
+      "Developed and compared random batching, grouped batching, and curriculum batching strategies across reproducible multi-seed experiments",
+      "Engineered a modular experimentation framework with YAML configs, automated aggregation scripts, and research-grade evaluation outputs",
+      "Found that semantic grouping improves training stability but does not significantly improve generalization performance",
+    ],
+    tags: ["LLMs", "Instruction Tuning", "Flan-T5", "LoRA", "Hugging Face", "FAISS", "Sentence Transformers"],
+  },
+  {
     company: "Center of Language Engineering",
     role: "AI Research Officer",
     duration: "Nov 2023 – Feb 2025",
@@ -50,15 +63,17 @@ export const experiences: Experience[] = [
   {
     company: "Nodlays, Lahore",
     role: "AI Engineer",
-    duration: "Feb 2023 – Jan 2024",
+    duration: "Oct 2022 – Jan 2024",
     logo: logoNodlays,
     bullets: [
-      "Engineered YOLOv7 pipeline for semiconductor DataMatrix recovery on Azure ML — 60% manual QA reduction",
-      "Built GPT-powered fitness assistant with Django REST for real-time personalised insights",
-      "Developed background removal API (92%+ accuracy) using OpenCV + Django REST",
+      "Worked on ML and computer vision systems spanning YOLO, OCR, and image processing workflows for production use cases",
+      "Developed and deployed models using Azure ML and Roboflow, including a YOLOv7 pipeline for semiconductor DataMatrix recovery",
+      "Built Django REST APIs for AI-powered applications, including GPT-based assistants and computer vision solutions",
+      "Contributed to applied AI systems that improved automation quality and reduced manual review effort",
     ],
-    tags: ["YOLOv7", "Azure ML", "GPT-3", "OpenCV", "Django REST"],
+    tags: ["YOLO", "OCR", "Azure ML", "Roboflow", "Django REST", "OpenCV", "GPT"],
   },
+  /*
   {
     company: "Highbit Games, Lahore",
     role: "Software Engineer",
@@ -70,6 +85,8 @@ export const experiences: Experience[] = [
     ],
     tags: ["Django", "React", "OpenCV", "Stripe", "PayPal"],
   },
+  */
+  /*
   {
     company: "ICRL Labs, KICS, UET",
     role: "Machine Learning Intern",
@@ -81,6 +98,7 @@ export const experiences: Experience[] = [
     ],
     tags: ["YOLO", "OCR", "Python", "Annotation"],
   },
+  */
   {
     company: "Freelance Developer — Fiverr",
     role: "AI & Web Developer",
