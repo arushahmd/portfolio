@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arushahmd.github.io/portfolio/sitemap.xml

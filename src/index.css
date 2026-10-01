@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
 
 html, body, #root {
   margin: 0;
@@ -73,10 +73,28 @@ html.theme-signal .app-shell {
 /* Smooth image rendering */
 img { image-rendering: -webkit-optimize-contrast; }
 
-/* Remove default button outline, keep custom focus */
-button:focus-visible {
+/* Keep keyboard focus visible across interactive controls. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
   outline: 2px solid #4F46E5;
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 html.theme-dark .bg-slate-50 { background-color: #020617 !important; }

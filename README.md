@@ -1,69 +1,33 @@
-# React + TypeScript + Vite
+# Aroosh Ahmad — Applied AI / ML Engineer portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the recruiter-facing portfolio for Aroosh Ahmad. It presents flagship public work across LLMs and agentic AI, RAG/NLP, real-time voice AI, computer vision/OCR, and Python AI/backend systems.
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The site is a React + TypeScript + Vite application styled with Tailwind CSS and animated with Framer Motion. Content is kept in page-level data modules under `src/pages` so project, experience, capability, education, and certification updates can be reviewed independently from layout code.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Build and deployment
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run lint
+npm run build
+npm run preview
 ```
+
+GitHub Pages deployment uses the Vite base path `/portfolio/` and the `gh-pages` package configured in `package.json`. The public site is [arushahmd.github.io/portfolio](https://arushahmd.github.io/portfolio/).
+
+## Content maintenance
+
+- `src/pages/Home/personal.ts` — identity, positioning, navigation, and recruiter links
+- `src/pages/Projects/projectsData.ts` — the five flagship public repositories
+- `src/pages/Experience/experienceData.ts` — concise work history
+- `src/pages/Skills/skillsData.ts` — capability groups
+- `src/pages/About/aboutData.ts` — bio, education, and certification links
+- `index.html`, `public/robots.txt`, and `public/sitemap.xml` — SEO and crawler metadata
+
+Contact form delivery is configured through the `VITE_EMAILJS_*` variables. Without those values, the form falls back to a prefilled email message using `VITE_CONTACT_EMAIL`.

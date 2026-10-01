@@ -6,34 +6,23 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
-    category: "AI / ML / LLMs",
-    icon: "🤖",
-    chips: [
-      "PyTorch", "TensorFlow", "Hugging Face", "LangChain",
-      "LangGraph", "FAISS", "Pinecone", "DistilBERT",
-      "YOLOv5/7/8", "Transformers", "Llama", "GPT-4",
-    ],
+    category: "AI / ML & Vision",
+    icon: "◈",
+    chips: ["PyTorch", "Transformers", "Hugging Face", "LoRA / PEFT", "OCR", "CNN-BiLSTM-CTC", "Computer Vision"],
   },
   {
-    category: "Voice AI & NLP",
-    icon: "🎙️",
-    chips: [
-      "Twilio Media Streams", "Deepgram STT/TTS", "spaCy",
-      "PaddleOCR", "RAG", "Prompt Engineering",
-      "NER", "Text-to-SQL", "Intent Detection",
-    ],
+    category: "LLM / NLP",
+    icon: "✦",
+    chips: ["Instruction Fine-Tuning", "RAG / Retrieval", "FAISS", "Intent Classification", "NER", "Evaluation / Error Analysis"],
   },
   {
-    category: "Languages",
-    icon: "⚡",
-    chips: ["Python", "JavaScript", "TypeScript", "SQL", "React.js", "Next.js"],
+    category: "Backend / Systems",
+    icon: "⌘",
+    chips: ["Python", "FastAPI", "REST APIs", "WebSockets", "Redis", "SQL", "Docker"],
   },
   {
-    category: "Backend & Infrastructure",
-    icon: "🏗️",
-    chips: [
-      "FastAPI", "Django REST", "Redis", "PostgreSQL",
-      "Docker", "AWS", "GCP Vertex AI", "Azure ML", "CI/CD",
-    ],
+    category: "Voice / Engineering",
+    icon: "⌁",
+    chips: ["Twilio Media Streams", "Deepgram STT/TTS", "State / Session Orchestration", "Testing", "CI / GitHub Actions"],
   },
 ];

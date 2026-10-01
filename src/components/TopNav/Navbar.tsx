@@ -41,6 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <motion.nav
+        aria-label="Primary"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.4 }}
@@ -101,6 +102,7 @@ const Navbar: React.FC<NavbarProps> = ({
           {/* Hire Me CTA */}
           <button
             onClick={() => scrollTo("contact")}
+            aria-label="Contact"
             className="ml-2 hidden md:flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 cursor-pointer"
           >
             Hire Me
@@ -114,6 +116,8 @@ const Navbar: React.FC<NavbarProps> = ({
             onClick={() => setMenuOpen((o) => !o)}
             className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
           >
             <span className={`block w-5 h-0.5 bg-slate-700 transition-all duration-200 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
             <span className={`block w-5 h-0.5 bg-slate-700 transition-all duration-200 ${menuOpen ? "opacity-0" : ""}`} />
@@ -125,6 +129,8 @@ const Navbar: React.FC<NavbarProps> = ({
       {/* Mobile menu */}
       {menuOpen && (
         <motion.div
+          id="mobile-navigation"
+          role="menu"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
@@ -141,6 +147,7 @@ const Navbar: React.FC<NavbarProps> = ({
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
+                role="menuitem"
                 className={`text-left px-4 py-2.5 rounded-lg text-sm transition-colors cursor-pointer ${
                   activeId === id
                     ? "bg-indigo-50 text-indigo-600 font-medium"
@@ -152,6 +159,7 @@ const Navbar: React.FC<NavbarProps> = ({
             ))}
             <button
               onClick={() => scrollTo("contact")}
+              role="menuitem"
               className="mt-2 w-full py-2.5 bg-indigo-600 text-white text-sm font-medium rounded-lg cursor-pointer"
             >
               Hire Me →

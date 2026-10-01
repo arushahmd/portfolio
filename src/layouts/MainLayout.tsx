@@ -84,21 +84,29 @@ const MainLayout: React.FC = () => {
 
   return (
     <div className="app-shell bg-slate-50 min-h-screen transition-colors duration-300">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:text-indigo-700 focus:shadow-lg"
+      >
+        Skip to main content
+      </a>
       <Navbar
         themePreference={themePreference}
         onToggleTheme={toggleTheme}
       />
-      <HeroSection />
-      <Divider />
-      <ExperienceSection />
-      <Divider />
-      <ProjectsSection />
-      <Divider />
-      <SkillsSection />
-      <Divider />
-      <AboutSection />
-      <Divider />
-      <ContactSection />
+      <main id="main-content">
+        <HeroSection />
+        <Divider />
+        <ProjectsSection />
+        <Divider />
+        <ExperienceSection />
+        <Divider />
+        <SkillsSection />
+        <Divider />
+        <AboutSection />
+        <Divider />
+        <ContactSection />
+      </main>
       <Divider />
       <Footer />
     </div>
