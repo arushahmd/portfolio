@@ -22,7 +22,7 @@ export const recruiterLinks = [
 ];
 
 export const navSections = [
-  { label: "Flagship Work", id: "work" },
+  { label: "Selected Work", id: "work" },
   { label: "Experience", id: "experience" },
   { label: "Capabilities", id: "capabilities" },
   { label: "About", id: "about" },

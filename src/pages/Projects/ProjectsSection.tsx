@@ -12,14 +12,14 @@ const ProjectsSection: React.FC = () => (
     >
       <p className="font-mono text-xs text-indigo-600 uppercase tracking-widest mb-2 flex items-center gap-2">
         <span className="w-5 h-px bg-indigo-600 inline-block" aria-hidden="true" />
-        Selected Work
+        Projects
       </p>
       <h2
         id="work-heading"
         className="text-slate-900 mb-3"
         style={{ fontFamily: "'Instrument Serif', Georgia, serif", fontSize: "clamp(36px,5vw,52px)", fontWeight: 400 }}
       >
-        Flagship Work
+        Selected Work
       </h2>
       <p className="text-slate-500 text-base max-w-xl">
         Public projects that show how I combine model behavior, evaluation, and production-minded Python systems.

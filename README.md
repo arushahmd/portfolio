@@ -30,4 +30,20 @@ GitHub Pages deployment uses the Vite base path `/portfolio/` and the `gh-pages`
 - `src/pages/About/aboutData.ts` — bio, education, and certification links
 - `index.html`, `public/robots.txt`, and `public/sitemap.xml` — SEO and crawler metadata
 
-Contact form delivery is configured through the `VITE_EMAILJS_*` variables. Without those values, the form falls back to a prefilled email message using `VITE_CONTACT_EMAIL`.
+### Contact form and EmailJS configuration
+
+EmailJS sends directly only when all three of these variables are present and non-empty:
+
+```text
+VITE_EMAILJS_SERVICE_ID
+VITE_EMAILJS_TEMPLATE_ID
+VITE_EMAILJS_PUBLIC_KEY
+```
+
+Set them in a local `.env`/`.env.local` file or in the build environment. Do not commit credentials. Keep the fallback recipient configured as:
+
+```text
+VITE_CONTACT_EMAIL=arooshahmad.data@gmail.com
+```
+
+If any EmailJS variable is missing, the form does not call EmailJS. It opens a prefilled `mailto:` message instead. The EmailJS template receives these frontend field names: `from_name`, `reply_to`, `message`, `to_email`, `owner_email`, `subject`, and `site_name`. Use `.env.example` as the configuration template.

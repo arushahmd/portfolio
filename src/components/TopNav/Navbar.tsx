@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { personal, navSections } from "../../pages/Home/personal";
 import profileImg from "../../assets/profile.png";
 import ThemeToggle, { type ThemePreference } from "./ThemeToggle";
+import { scrollToSection } from "../../utils/scrollToSection";
 
 interface NavbarProps {
   themePreference: ThemePreference;
@@ -33,9 +34,7 @@ const Navbar: React.FC<NavbarProps> = ({
 
   const scrollTo = (id: string) => {
     setMenuOpen(false);
-    const el = document.getElementById(id);
-    if (!el) return;
-    window.scrollTo({ top: el.offsetTop - 68, behavior: "smooth" });
+    scrollToSection(id);
   };
 
   return (

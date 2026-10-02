@@ -6,6 +6,7 @@ import {
   FiMail,
 } from "react-icons/fi";
 import { hero, personal, recruiterLinks } from "./personal";
+import { scrollToSection } from "../../utils/scrollToSection";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 1, y: 12 },
@@ -20,11 +21,6 @@ const iconMap = {
 };
 
 const HeroSection: React.FC = () => {
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.offsetTop - 68, behavior: "smooth" });
-  };
-
   return (
     <section
       id="hero"
@@ -78,14 +74,14 @@ const HeroSection: React.FC = () => {
 
       <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-3 mb-4">
         <button
-          onClick={() => scrollTo("work")}
+          onClick={() => scrollToSection("work")}
           className="hero-primary-cta flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-200 cursor-pointer"
         >
-          View Flagship Work
+          View Selected Work
           <FiArrowRight className="w-4 h-4" aria-hidden="true" />
         </button>
         <button
-          onClick={() => scrollTo("contact")}
+          onClick={() => scrollToSection("contact")}
           className="hero-secondary-cta flex items-center gap-2 px-6 py-3 bg-white border border-slate-300 hover:border-indigo-400 text-slate-700 hover:text-indigo-600 text-sm font-medium rounded-lg transition-all duration-150 cursor-pointer"
         >
           Get in Touch
