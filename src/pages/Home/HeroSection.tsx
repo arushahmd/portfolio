@@ -8,9 +8,9 @@ import {
 import { hero, personal, recruiterLinks } from "./personal";
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 24 },
+  initial: { opacity: 1, y: 12 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.55, delay, ease: "easeOut" },
+  transition: { duration: 0.35, delay, ease: "easeOut" },
 });
 
 const iconMap = {
@@ -28,7 +28,7 @@ const HeroSection: React.FC = () => {
   return (
     <section
       id="hero"
-      className="hero-stage relative min-h-screen flex flex-col justify-center px-6 pt-24 pb-16 max-w-6xl mx-auto overflow-hidden"
+      className="hero-stage relative flex flex-col px-6 pt-20 pb-12 md:pt-24 md:pb-14 max-w-6xl mx-auto overflow-hidden"
       aria-labelledby="hero-heading"
     >
       <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
@@ -37,14 +37,14 @@ const HeroSection: React.FC = () => {
         <div className="absolute left-[28%] top-44 h-64 w-64 rounded-full bg-amber-300/10 blur-3xl" />
       </div>
 
-      <motion.div {...fadeUp(0)} className="mb-6">
+      <motion.div {...fadeUp(0)} className="mb-5">
         <span className="inline-flex items-center gap-2 text-xs font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" aria-hidden="true" />
           Greater Toronto Area, Canada
         </span>
       </motion.div>
 
-      <motion.div {...fadeUp(0.08)} className="mb-5 max-w-4xl">
+      <motion.div {...fadeUp(0.06)} className="mb-4 max-w-4xl">
         <div className="font-mono text-xs uppercase tracking-[0.28em] text-indigo-500 mb-4">
           Applied AI · Reproducible systems · Clear engineering
         </div>
@@ -63,20 +63,20 @@ const HeroSection: React.FC = () => {
         </h1>
       </motion.div>
 
-      <motion.div {...fadeUp(0.16)} className="mb-8 max-w-4xl">
-        <p className="text-2xl md:text-[30px] text-slate-900 font-medium tracking-tight mb-3">
+      <motion.div {...fadeUp(0.12)} className="mb-6 max-w-4xl">
+        <p className="text-2xl md:text-[30px] text-slate-900 font-medium tracking-tight mb-2">
           {hero.headline}
         </p>
         <p className="text-base md:text-lg text-slate-500">{hero.subheadline}</p>
       </motion.div>
 
-      <motion.div {...fadeUp(0.24)} className="max-w-4xl mb-10">
+      <motion.div {...fadeUp(0.18)} className="max-w-4xl mb-8">
         <p className="text-base md:text-lg text-slate-500 leading-relaxed border-l-2 border-indigo-400 pl-5">
           {hero.summary}
         </p>
       </motion.div>
 
-      <motion.div {...fadeUp(0.32)} className="flex flex-wrap gap-3 mb-5">
+      <motion.div {...fadeUp(0.24)} className="flex flex-wrap gap-3 mb-4">
         <button
           onClick={() => scrollTo("work")}
           className="hero-primary-cta flex items-center gap-2 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-200 cursor-pointer"
@@ -92,7 +92,7 @@ const HeroSection: React.FC = () => {
         </button>
       </motion.div>
 
-      <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-2.5 mb-10">
+      <motion.div {...fadeUp(0.3)} className="flex flex-wrap gap-2.5">
         {recruiterLinks.map((link) => (
           <a
             key={link.label}
@@ -107,28 +107,6 @@ const HeroSection: React.FC = () => {
         ))}
       </motion.div>
 
-      <motion.div
-        {...fadeUp(0.48)}
-        className="hero-focus-panel max-w-4xl rounded-2xl border border-slate-200 bg-white/80 backdrop-blur-sm p-5 md:p-6"
-      >
-        <div className="font-mono text-[11px] uppercase tracking-[0.24em] text-indigo-500 mb-3">
-          Focus areas
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-slate-600">
-          <div>
-            <strong className="block text-slate-900 font-medium mb-1">Models with boundaries</strong>
-            LLM, NLP, and vision components connected to explicit application logic.
-          </div>
-          <div>
-            <strong className="block text-slate-900 font-medium mb-1">Real-time systems</strong>
-            Voice and backend workflows designed around state, sessions, and observability.
-          </div>
-          <div>
-            <strong className="block text-slate-900 font-medium mb-1">Reproducible research</strong>
-            Experiments with controlled protocols, evaluation artifacts, and clear limitations.
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 };

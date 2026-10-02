@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import about from "./aboutData";
 
 const AboutSection: React.FC = () => (
-  <section id="about" aria-labelledby="about-heading" className="py-24 px-6 max-w-6xl mx-auto">
+  <section id="about" aria-labelledby="about-heading" className="py-20 md:py-24 px-6 max-w-6xl mx-auto">
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 1, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="mb-14"
+      className="mb-10 md:mb-12"
     >
       <p className="font-mono text-xs text-indigo-600 uppercase tracking-widest mb-2 flex items-center gap-2">
         <span className="w-5 h-px bg-indigo-600 inline-block" aria-hidden="true" />
@@ -28,7 +28,7 @@ const AboutSection: React.FC = () => (
         {about.bio.map((paragraph, index) => (
           <motion.p
             key={paragraph}
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 1, y: 8 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, delay: index * 0.1 }}
             viewport={{ once: true }}
@@ -40,7 +40,7 @@ const AboutSection: React.FC = () => (
       </div>
 
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
+        initial={{ opacity: 1, x: 10 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, delay: 0.15 }}
         viewport={{ once: true }}
@@ -53,7 +53,7 @@ const AboutSection: React.FC = () => (
               <div className="flex justify-between items-start gap-2">
                 <div>
                   <div className="text-sm font-medium text-slate-900 leading-snug">{education.degree}</div>
-                  <div className="font-mono text-xs text-slate-400 mt-0.5">{education.school}</div>
+                  <div className="font-mono text-xs text-slate-500 mt-0.5">{education.school}</div>
                 </div>
                 <span className="font-mono text-xs text-indigo-500 shrink-0">{education.year}</span>
               </div>
@@ -69,11 +69,17 @@ const AboutSection: React.FC = () => (
                 href={certification.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium text-slate-900 leading-snug hover:text-indigo-600 transition-colors"
+                aria-label={`${certification.name} — View credential`}
+                className="group block rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2"
               >
-                {certification.name} ↗
+                <span className="block text-sm font-medium text-slate-900 leading-snug group-hover:text-indigo-600 transition-colors">
+                  {certification.name}
+                </span>
+                <span className="mt-1 inline-flex items-center gap-1 font-mono text-xs text-indigo-600 group-hover:underline">
+                  View credential <span aria-hidden="true">↗</span>
+                </span>
               </a>
-              <div className="font-mono text-xs text-slate-400 mt-0.5">{certification.issuer}</div>
+              <div className="font-mono text-xs text-slate-500 mt-1">{certification.issuer}</div>
             </div>
           ))}
         </div>

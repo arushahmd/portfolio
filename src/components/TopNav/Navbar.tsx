@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navSections.map(({ label, id }) => (
               <button
                 key={id}
@@ -103,7 +103,7 @@ const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={() => scrollTo("contact")}
             aria-label="Contact"
-            className="ml-2 hidden md:flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 cursor-pointer"
+            className="ml-2 hidden lg:flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg transition-all duration-150 hover:-translate-y-0.5 cursor-pointer"
           >
             Hire Me
             <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">
@@ -114,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className="md:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
+            className="lg:hidden flex flex-col gap-1.5 p-1 cursor-pointer"
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
@@ -134,7 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
-          className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-slate-200 shadow-lg md:hidden"
+          className="fixed top-16 left-0 right-0 z-40 bg-white border-b border-slate-200 shadow-lg lg:hidden"
         >
           <div className="flex flex-col p-4 gap-1">
             <div className="mb-2">

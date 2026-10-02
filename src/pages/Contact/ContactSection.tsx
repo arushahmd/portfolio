@@ -96,13 +96,13 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="py-24 px-6 max-w-6xl mx-auto">
+    <section id="contact" aria-labelledby="contact-heading" className="py-20 md:py-24 px-6 max-w-6xl mx-auto">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 1, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="mb-14"
+        className="mb-10 md:mb-12"
       >
         <p className="font-mono text-xs text-indigo-600 uppercase tracking-widest mb-2 flex items-center gap-2">
           <span className="w-5 h-px bg-indigo-600 inline-block" aria-hidden="true" />
@@ -127,7 +127,7 @@ const ContactSection: React.FC = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
           viewport={{ once: true }}
@@ -200,12 +200,12 @@ const ContactSection: React.FC = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 1, x: 10 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.15 }}
           viewport={{ once: true }}
         >
-          <p className="font-mono text-xs text-slate-400 uppercase tracking-widest mb-4">Direct Channels</p>
+          <p className="font-mono text-xs text-slate-500 uppercase tracking-widest mb-4">Direct Channels</p>
           <div className="flex flex-col gap-3">
             {channels.map((ch) => (
               <a
@@ -223,7 +223,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium text-slate-900">{ch.name}</div>
-                  <div className="font-mono text-xs text-slate-400 truncate">{ch.handle}</div>
+                  <div className="font-mono text-xs text-slate-500 truncate">{ch.handle}</div>
                 </div>
                 <svg
                   aria-hidden="true"

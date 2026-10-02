@@ -146,7 +146,7 @@ html.theme-signal .text-slate-800 { color: #f4f4f5 !important; }
 html.theme-signal .text-slate-700 { color: #e5e7eb !important; }
 html.theme-signal .text-slate-600 { color: #d4d4d8 !important; }
 html.theme-signal .text-slate-500 { color: #a1a1aa !important; }
-html.theme-signal .text-slate-400 { color: #737373 !important; }
+html.theme-signal .text-slate-400 { color: #a3a3a3 !important; }
 html.theme-signal .text-indigo-600 { color: #f1d47a !important; }
 html.theme-signal .text-indigo-500 { color: #f1d47a !important; }
 html.theme-signal .text-emerald-700 { color: #8af5d3 !important; }
@@ -184,7 +184,7 @@ html.theme-signal ::-webkit-scrollbar-thumb { background: #2f2f2f; }
 html.theme-signal ::-webkit-scrollbar-thumb:hover { background: #4a4a4a; }
 
 html.theme-signal .hero-stage {
-  padding-top: 7.5rem;
+  padding-top: 5.5rem;
 }
 
 html.theme-signal .hero-stage h1,

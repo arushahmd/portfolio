@@ -19,7 +19,7 @@ const Divider = () => (
 
 const Footer = () => (
   <footer className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-    <span className="font-mono text-xs text-slate-400">
+    <span className="font-mono text-xs text-slate-500">
       © {new Date().getFullYear()} {personal.name} · Built with React + Vite
     </span>
     <div className="flex gap-5">
@@ -33,7 +33,7 @@ const Footer = () => (
           href={l.url}
           target={l.url.startsWith("mailto") ? undefined : "_blank"}
           rel="noopener noreferrer"
-          className="font-mono text-xs text-slate-400 hover:text-indigo-600 transition-colors"
+          className="font-mono text-xs text-slate-500 hover:text-indigo-600 transition-colors"
         >
           {l.label}
         </a>

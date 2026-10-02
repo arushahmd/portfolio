@@ -2,13 +2,13 @@ import { motion } from "framer-motion";
 import { skillGroups } from "./skillsData";
 
 const SkillsSection: React.FC = () => (
-  <section id="capabilities" aria-labelledby="capabilities-heading" className="py-24 px-6 max-w-6xl mx-auto">
+  <section id="capabilities" aria-labelledby="capabilities-heading" className="py-20 md:py-24 px-6 max-w-6xl mx-auto">
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 1, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="mb-14"
+      className="mb-10 md:mb-12"
     >
       <p className="font-mono text-xs text-indigo-600 uppercase tracking-widest mb-2 flex items-center gap-2">
         <span className="w-5 h-px bg-indigo-600 inline-block" aria-hidden="true" />
@@ -30,7 +30,7 @@ const SkillsSection: React.FC = () => (
       {skillGroups.map((group, idx) => (
         <motion.div
           key={group.category}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 1, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, delay: idx * 0.08 }}
           viewport={{ once: true }}
@@ -44,7 +44,7 @@ const SkillsSection: React.FC = () => (
           </div>
           <div className="flex flex-wrap gap-2">
             {group.chips.map((chip) => (
-              <span key={chip} className="font-mono text-[11px] px-2.5 py-1 rounded-md border border-slate-200 bg-slate-50 text-slate-500">
+              <span key={chip} className="font-mono text-xs px-2.5 py-1 rounded-md border border-slate-200 bg-slate-50 text-slate-600">
                 {chip}
               </span>
             ))}
