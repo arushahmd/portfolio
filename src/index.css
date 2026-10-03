@@ -82,6 +82,15 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+.contact-github-icon {
+  color: #111827;
+  transition: color 150ms ease;
+}
+
+.contact-channel:hover .contact-github-icon {
+  color: #4f46e5;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -117,6 +126,14 @@ html.theme-dark .text-slate-600 { color: #cbd5e1 !important; }
 html.theme-dark .text-slate-500 { color: #94a3b8 !important; }
 html.theme-dark .text-slate-400 { color: #64748b !important; }
 html.theme-dark .text-gray-50 { color: #f8fafc !important; }
+html.theme-dark .contact-github-icon,
+html.theme-signal .contact-github-icon {
+  color: #f8fafc !important;
+}
+html.theme-dark .contact-channel:hover .contact-github-icon,
+html.theme-signal .contact-channel:hover .contact-github-icon {
+  color: #ffffff !important;
+}
 html.theme-dark .hover\:bg-slate-100:hover { background-color: #1e293b !important; }
 html.theme-dark .hover\:bg-slate-50:hover { background-color: #111827 !important; }
 html.theme-dark .hover\:border-slate-300:hover { border-color: #64748b !important; }
